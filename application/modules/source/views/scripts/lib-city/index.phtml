@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibCity: Data Grid -->
+<span id="LibCityGrid">
+<?php include_once("lib-city-grid.phtml");?>
+</span>
+<!-- [End] LibCity: Data Grid -->
+
+<!-- LibCity: Modal Form -->
+<?php include_once("lib-city-modal.phtml");?>
+<!-- [End] LibCity: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-city";
+
+	$(document).ready(function() {
+		$("#navLibCity").addClass("active");
+		searchHandler["srch-libCity"] = {
+				action: theme + "/lib-city-grid",
+				container: "LibCityGrid"
+		};
+    searchStack["srch-libCity"] = wrapFunction(search, this, ["srch-libCity"]);
+	});
+
+	function addLibCity(id) {
+		//$("#libCityModalHeading").html("Add New Lib City");
+		mode = "create";
+		clearForm("libCity", "modalLibCity");
+	}
+
+	function editLibCity(id) {
+		//$("#libCityModalHeading").html("Edit Lib City");
+		mode = "update";
+		populateForm("libCity", "lib_city", libCityData[id], "modalLibCity");
+	}
+
+</script>

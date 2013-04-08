@@ -1,0 +1,43 @@
+<!-- Material: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalMaterial">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="materialModalHeading">Edit Material</h3>
+	  </div>
+		<form id="materialForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="material_name"><b>Name *</b></label>
+						<input id="material_name" name="name" type="text"
+							form-id="material" class="span12 required" maxlength="100">
+					</div>
+				<input type="hidden" id="material_id" name="id" form-id="material">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Material: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#materialForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("material", "material", "api/data/" + mode,
+			  	"MaterialGrid", theme + "/material-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

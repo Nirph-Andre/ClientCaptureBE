@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibRepeaterTemplate: Data Grid -->
+<span id="LibRepeaterTemplateGrid">
+<?php include_once("lib-repeater-template-grid.phtml");?>
+</span>
+<!-- [End] LibRepeaterTemplate: Data Grid -->
+
+<!-- LibRepeaterTemplate: Modal Form -->
+<?php include_once("lib-repeater-template-modal.phtml");?>
+<!-- [End] LibRepeaterTemplate: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-repeater-template";
+
+	$(document).ready(function() {
+		$("#navLibRepeaterTemplate").addClass("active");
+		searchHandler["srch-libRepeaterTemplate"] = {
+				action: theme + "/lib-repeater-template-grid",
+				container: "LibRepeaterTemplateGrid"
+		};
+    searchStack["srch-libRepeaterTemplate"] = wrapFunction(search, this, ["srch-libRepeaterTemplate"]);
+	});
+
+	function addLibRepeaterTemplate(id) {
+		//$("#libRepeaterTemplateModalHeading").html("Add New Lib Repeater Template");
+		mode = "create";
+		clearForm("libRepeaterTemplate", "modalLibRepeaterTemplate");
+	}
+
+	function editLibRepeaterTemplate(id) {
+		//$("#libRepeaterTemplateModalHeading").html("Edit Lib Repeater Template");
+		mode = "update";
+		populateForm("libRepeaterTemplate", "lib_repeater_template", libRepeaterTemplateData[id], "modalLibRepeaterTemplate");
+	}
+
+</script>

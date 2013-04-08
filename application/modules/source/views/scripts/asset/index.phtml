@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Asset: Data Grid -->
+<span id="AssetGrid">
+<?php include_once("asset-grid.phtml");?>
+</span>
+<!-- [End] Asset: Data Grid -->
+
+<!-- Asset: Modal Form -->
+<?php include_once("asset-modal.phtml");?>
+<!-- [End] Asset: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/asset";
+
+	$(document).ready(function() {
+		$("#navAsset").addClass("active");
+		searchHandler["srch-asset"] = {
+				action: theme + "/asset-grid",
+				container: "AssetGrid"
+		};
+    searchStack["srch-asset"] = wrapFunction(search, this, ["srch-asset"]);
+	});
+
+	function addAsset(id) {
+		//$("#assetModalHeading").html("Add New Asset");
+		mode = "create";
+		clearForm("asset", "modalAsset");
+	}
+
+	function editAsset(id) {
+		//$("#assetModalHeading").html("Edit Asset");
+		mode = "update";
+		populateForm("asset", "asset", assetData[id], "modalAsset");
+	}
+
+</script>

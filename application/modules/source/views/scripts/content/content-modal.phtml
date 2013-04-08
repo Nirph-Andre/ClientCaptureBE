@@ -1,0 +1,58 @@
+<!-- Content: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalContent">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="contentModalHeading">Edit Content</h3>
+	  </div>
+		<form id="contentForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="content_type"><b>Type *</b></label>
+						<input id="content_type" name="type" type="text"
+							form-id="content" class="span8 required" maxlength="25">
+					</div>
+		  		<div class="control-group">
+		    		<label for="content_name"><b>Name *</b></label>
+						<input id="content_name" name="name" type="text"
+							form-id="content" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+			  		<label for="content_html"><b>Html</b></label>
+						<textarea id="content_html" name="html" rows="5"
+							form-id="content" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+			  		<label for="content_js"><b>Js</b></label>
+						<textarea id="content_js" name="js" rows="5"
+							form-id="content" class="span12 " maxlength="65535"></textarea>
+					</div>
+				<input type="hidden" id="content_id" name="id" form-id="content">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Content: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#contentForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("content", "content", "api/data/" + mode,
+			  	"ContentGrid", theme + "/content-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

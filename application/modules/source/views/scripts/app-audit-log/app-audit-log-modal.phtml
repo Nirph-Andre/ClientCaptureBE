@@ -1,0 +1,64 @@
+<!-- AppAuditLog: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalAppAuditLog">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="appAuditLogModalHeading">Edit App Audit Log</h3>
+	  </div>
+		<form id="appAuditLogForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="appAuditLog_customer_context"><b>Customer Context *</b></label>
+						<input id="appAuditLog_customer_context" name="customer_context" type="text"
+							form-id="appAuditLog" class="span10 required" maxlength="30">
+					</div>
+		  		<div class="control-group">
+				  	<label for="appAuditLog_action"><b>Action</b></label>
+						<select id="appAuditLog_action" name="action"
+							form-id="appAuditLog" class="span12 " >
+							<option value="">-- Select Action --</option>
+							<option value="Add">Add</option>
+<option value="Update">Update</option>
+<option value="Delete">Delete</option>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="appAuditLog_table_name"><b>Table Name *</b></label>
+						<input id="appAuditLog_table_name" name="table_name" type="text"
+							form-id="appAuditLog" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+			  		<label for="appAuditLog_data_packet"><b>Data Packet</b></label>
+						<textarea id="appAuditLog_data_packet" name="data_packet" rows="5"
+							form-id="appAuditLog" class="span12 " maxlength="16777215"></textarea>
+					</div>
+				<input type="hidden" id="appAuditLog_id" name="id" form-id="appAuditLog">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] AppAuditLog: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#appAuditLogForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("appAuditLog", "appAuditLog", "api/data/" + mode,
+			  	"AppAuditLogGrid", theme + "/app-audit-log-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

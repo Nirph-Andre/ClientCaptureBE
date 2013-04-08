@@ -1,0 +1,460 @@
+<?php echo $this->doctype(); ?>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6"> <![endif]--> <!--[if IE 7 ]>		<html lang="en" class="ie7"> <![endif]--> <!--[if IE 8 ]>		<html lang="en" class="ie8"> <![endif]--> <!--[if IE 9 ]>		<html lang="en" class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Rapid Requirements Collector">
+	<meta name="author" content="Quantum Weaver">
+	<title>mentem - Matula</title>
+	
+	
+	<!-- Styling -->
+	<link href="/css/bootstrap.min.css" rel="stylesheet" id="main-theme-script">
+	<link href="/scripts/datepicker/css/datepicker.css" rel="stylesheet" />
+	<link href="/css/app.css" rel="stylesheet" id="main-theme-script">
+	<link href="/css/themes/default.css" rel="stylesheet" id="theme-specific-script">
+	<link href="/css/slide.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="/scripts/datepicker/css/datepicker.css" rel="stylesheet">
+	<link href="/css/prettyLoader.css" type="text/css" rel="stylesheet" media="screen" />
+	
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="/favicon.ico?v=1">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/quantum-114x114.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/quantum-72x72.png">
+	<link rel="apple-touch-icon-precomposed" href="/images/ico/quantum-57x57.png">
+
+	<!-- Essential JS -->
+	<script type="text/javascript" src="/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.23.custom.min.js"></script>
+	<script type="text/javascript" src="/js/slide.js"></script>
+	
+</head>
+<body data-spy="scroll" data-target=".subnav" data-offset="50">
+<!-- Panel -->
+<div id="toppanel" class="">
+	<div id="panel">
+		<div id="panelMainContent" class="content clearfix">
+			<div class="left one">
+				<h1>Welcome to Matula</h1>
+				<h2>On stage</h2>		
+				<p class="grey">Bootstrap, jQuery and APE Push Notifications, our star performers.</p>
+				<h2>Behind the scenes</h2>
+				<p class="grey">Backstage we are sporting Zend Framework, Struct v0.2b and reGen v0.3a</p>
+			</div>
+			<div class="left two">		
+				<!-- Register Form -->
+				<form id="registerForm" action="#" method="post">
+					<h1>Not a member yet? Sign Up!</h1>				
+					<label class="grey" for="signup">Username:</label>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-user icon-white"></i></span><input class="field"
+											id="register_username" name="username" type="text" placeholder="username" form-id="register">
+									</div>
+					<label class="grey" for="email">Email:</label>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-envelope icon-white"></i></span><input class="field"
+											id="register_email" name="email" type="text" placeholder="email" form-id="register">
+									</div>
+					<span class="pull-left">
+						<p>A password will be e-mailed to you.</p>
+						<button type="submit" id="btnRegister" value="Login" class="btn">Register</button>
+					</span>
+				</form>
+			</div>
+			<div class="left right three">	
+				<!-- Login Form -->
+				<form id="loginForm" class="clearfix" action="#" method="post">
+					<h1 id="loginTitle">Member Login</h1>
+					<label class="grey" for="log">Email:</label><br/>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-envelope icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="email" class="email required" form-id="login">
+									</div>
+					<label class="grey" for="pwd">Password:</label>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-asterisk icon-white"></i></span><input class="field"
+											id="login_password" name="password" type="password" placeholder="password" class="required" form-id="login">
+									</div>
+								<label><input name="remember" id="remember" type="checkbox" checked="checked" value="1" form-id="login" /> &nbsp;Remember me</label>
+							<div class="clear"></div>
+					<span class="pull-left"><button type="submit" id="btnLogin" value="Login" class="btn">Login</button></span>
+					<span class="pull-right"><a class="lost-pwd" href="#">Lost your password?</a></span>
+				</form>
+			</div>
+		</div>
+		<div id="panelProfileContent" class="hidden">
+			<div class="left one">
+				<img src="/images/LogoSquare.png" class="img-rounded">
+			</div>
+			<div class="left two">		
+				<!-- Register Form -->
+				<form id="registerForm" action="#" method="post">
+					<h1>Profile</h1>				
+					<label class="grey" for="signup">Username:</label>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-user icon-white"></i></span><input class="field"
+											id="register_username" name="username" type="text" placeholder="username" form-id="register"
+											value="<?php echo Struct_Registry::getAuthParam('first_name'); ?>">
+									</div>
+					<label class="grey" for="log">Email:</label><br/>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-envelope icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="email" form-id="other"
+											value="<?php echo Struct_Registry::getAuthParam('email'); ?>">
+									</div>
+					<label class="grey" for="log">Date of Birth:</label><br/>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-calendar icon-white"></i></span><input class="field datepicker"
+											id="login_dob" name="dob" type="text" placeholder="yyyy-mm-dd" class="datepicker" form-id="other"
+											value="<?php echo Struct_Registry::getAuthParam('date_of_birth'); ?>">
+									</div>
+				</form>
+			</div>
+			<div class="left right three">	
+				<!-- Login Form -->
+				<form id="aForm" class="clearfix" action="#" method="post">
+					<h1>Contact Info</h1>
+					<label class="grey" for="log">IM:</label><br/>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-pencil icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="..." form-id="other">
+									</div>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-pencil icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="..." form-id="other">
+									</div>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-pencil icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="..." form-id="other">
+									</div>
+							<div class="input-prepend pull-left">
+										<span class="add-on"><i class="icon-pencil icon-white"></i></span><input class="field"
+											id="login_email" name="email" type="text" placeholder="..." form-id="other">
+									</div>
+								<div class="clear"></div><br/>
+					<span class="pull-left">
+						<button type="submit" name="submit" class="btn">Update</button>
+					</span>
+				</form>
+			</div>
+		</div>
+		<div id="panelSettingsContent" class="hidden">
+			<div class="left one">
+				<h1>Settings</h1>
+				<p class="grey">
+					Please note that these settings will affect how the entire application behaves.
+					If you would like more information on the settings please consult our <a href="#">documentation</a>.
+				</p>
+			</div>
+			<div class="left two">		
+				<!-- Register Form -->
+				<form id="registerForm" action="#" method="post">
+					<h1>Privacy Options</h1>
+					<label class="grey">
+							<input id="opt1" name="opt1" type="checkbox" class="" value="1">
+							Show my real name
+						</label>
+					<label class="grey">
+							<input id="opt2" type="checkbox" class="" value="1" checked>
+							Show my birthday
+						</label>	
+					<label class="grey">
+							<input id="opt3" type="checkbox" class="" value="1">
+							Show my email address
+						</label>
+					<label class="grey">
+							<input id="opt4" type="checkbox" class="" value="1" checked>
+							Show my IM details
+						</label>
+				</form>
+			</div>
+			<div class="left right three">	
+				<!-- Login Form -->
+				<form id="bForm" class="clearfix" action="#" method="post">
+					<h1>Application Settings</h1>
+					<label class="grey">
+							<input id="opt5" name="opt1" type="checkbox" class="" value="1" checked>
+							Remember my viewing options
+						</label>
+					<label class="grey">
+							<input id="opt6" type="checkbox" class="" value="1" checked>
+							Remember my widget placements
+						</label>	
+					<label class="grey">
+							<input id="opt7" type="checkbox" class="" value="1" checked>
+							Confirm on delete
+						</label>
+							<div class="clear"></div><br/>
+					<span class="pull-left"><button type="submit" name="submit" value="Login" class="btn">Update</button></span>
+				</form>
+			</div>
+		</div>
+	</div> <!-- /login -->	
+
+	<!-- The tab on top -->	
+	<div class="tab">
+		<ul class="login">
+			<li class="left">&nbsp;</li>
+			<?php if (!Struct_Registry::isAuthenticated()) { ?>
+			<li id="panelTabBrochure" class="top-panel-toggle" panel="#panelMainContent">
+				<a class="open" href="#">Log In | Sign Up</a>
+				<a style="display: none;" class="open" href="#">Close Panel</a>			
+			</li>
+			<?php } else { ?>
+			<li id="panelTabProfile" class="top-panel-toggle handy" panel="#panelProfileContent">
+				<span class="menu-nav-item"><i class="icon-user icon-white"></i></span></li>
+			<li class="sep nav-item"><span class="menu-nav-item">|</span></li>
+			<li id="panelTabSettings" class="top-panel-toggle handy" panel="#panelSettingsContent">
+				<span class="menu-nav-item"><i class="icon-cog icon-white"></i></span></li>
+			<li class="sep nav-item"><span class="menu-nav-item">|</span></li>
+			<li class="top-panel-toggle handy" onClick="window.location = '/api/authentication/logout';">
+				<span class="menu-nav-item"><i class="icon-off icon-white"></i>&nbsp;&nbsp;</span></li>
+			<?php } ?>
+			<li class="right"><span class="menu-nav-item">&nbsp;</span></li>
+		</ul> 
+	</div> <!-- / top -->
+	
+</div> <!--panel -->
+
+
+	
+<div class="container-fluid">
+<div class="row-fluid">
+ <div class="span3 well">
+ 		<div class="nav-vertical">
+		<!-- NAVIGATION -->
+		<ul class="nav nav-list">
+			<li class="divider"></li>
+			<li class="nav-header">
+				Asset Management
+				<span class="pull-right"><i class="icon-circle-arrow-up icon-circle-arrow-down"></i></span>
+			</li>
+		</ul>
+		<ul class="nav nav-list" style="display: none;">
+			<li class=""><a class="handy" onclick="loadUrl('/source/asset');">Assets</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/import');">Import</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/export');">Export</a></li>
+		</ul>
+		<ul class="nav nav-list">
+			<li class="divider"></li>
+			<li class="nav-header">
+				Asset Descriptors
+				<span class="pull-right"><i class="icon-circle-arrow-up icon-circle-arrow-down"></i></span>
+			</li>
+		</ul>
+		<ul class="nav nav-list" style="display: none;">
+			<li class=""><a class="handy" onclick="loadUrl('/source/owner');">Ownership</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/asset-type');">Asset Type</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/asset-sub-type');">Asset Sub Type</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/asset-description');">Asset Description</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/asset-sub-description');">Asset Sub Description</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/material');">Material</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/condition');">Condition</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/pole-length');">Pole Length</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/street-light-type');">Street Light Type</a></li>
+		</ul>
+		<ul class="nav nav-list">
+			<li class="divider"></li>
+			<li class="nav-header">
+				Location Descriptors
+				<span class="pull-right"><i class="icon-circle-arrow-up icon-circle-arrow-down"></i></span>
+			</li>
+		</ul>
+		<ul class="nav nav-list" style="display: none;">
+			<li class=""><a class="handy" onclick="loadUrl('/source/location');">Location</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/town');">Town</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/street');">Street</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/building');">Building</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/floor');">Floor</a></li>
+			<li class=""><a class="handy" onclick="loadUrl('/source/room');">Room</a></li>
+		</ul>
+		<ul class="nav nav-list">
+			<li class="divider"></li>
+			<li class="nav-header">
+				Settings
+				<span class="pull-right"><i class="icon-circle-arrow-up icon-circle-arrow-down"></i></span>
+			</li>
+		</ul>
+		<ul class="nav nav-list" style="display: none;">
+			<li class=""><a class="handy" onclick="loadUrl('/source/profile');">Profiles</a></li>
+		</ul>
+	<!-- /NAVIGATION -->
+	</div>
+ </div>
+ <div class="span9">
+ 
+<?php echo $this->layout()->content; ?>
+
+<?php if ('guild.local' == $_SERVER['SERVER_NAME']) {
+	$utilDisplay = Struct_Registry::get('Util.Display');
+	?>
+		&nbsp;<br/>&nbsp;<br/>&nbsp;<br/>
+		<div class="page-header">
+			<h2>&nbsp;</h2>
+		</div>
+			<div class="accordion" id="accordionDebug">
+			<?php $context = Struct_Registry::getContextData(); ?>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDebug" href="#collapseZero">
+					<span class="larger"><strong>Context Data</strong></span>
+				</a>
+				</div>
+				<div id="collapseZero" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<?php echo $utilDisplay->packOutData($context); ?>
+				</div>
+				</div>
+			</div>
+			<?php if (isset($this->result))	{ ?>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDebug" href="#collapseOne">
+					<span class="larger"><strong>Service Result</strong></span>
+				</a>
+				</div>
+				<div id="collapseOne" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<?php echo $utilDisplay->packOutData($this->result); ?>
+				</div>
+				</div>
+			</div>
+			<?php } ?>
+			<?php if (isset($this->data))	{ ?>
+			<div class="accordion-group">
+				<div class="accordion-heading">
+				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordionDebug" href="#collapseTwo">
+					<span class="larger"><strong>Service Data</strong></span>
+				</a>
+				</div>
+				<div id="collapseTwo" class="accordion-body collapse">
+				<div class="accordion-inner">
+					<?php echo $utilDisplay->packOutData($this->data); ?>
+				</div>
+				</div>
+			</div>
+			<?php } ?>
+			</div>
+<?php } ?>
+
+ </div>
+</div>
+</div>
+&nbsp;<br />&nbsp;<br />
+	<div class="row-fluid">
+	 <div class="span12 navbar-fixed-bottom">
+	 <button class="btn span12" type="submit" disabled>
+		 <span class="pull-right">mentum <strong>Matula</strong> <i class="icon-off"></i></span>
+	 </button>
+	 </div>
+	</div>
+</div>
+
+
+<!-- Confirm Delete: Modal Form -->
+<div class="row-fluid">
+	<div class="span12">
+	<div class="modal modal-thinner modal-down hide fade" id="modalDelete">
+		<div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3>Confirm Delete</h3>
+		</div>
+		<form id="deleteForm" class="modal-form">
+			<div class="modal-body">
+				<div class="span1">&nbsp;</div>
+				<div id="deleteFormContainer" class="span10">
+				This item will be permanently deleted. Are you sure?
+				<input id="delete_id" name="delete_id" type="hidden" value=""></input>
+				<input id="delete_remove_action" name="delete_remove_action" type="hidden" value=""></input>
+				<input id="delete_refresh_container" name="delete_refresh_container" type="hidden" value=""></input>
+				<input id="delete_refresh_action" name="delete_refresh_action" type="hidden" value=""></input>
+				</div>
+				<div class="span1">&nbsp;</div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger btn-save">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning"
+				data-loading-text="removing..."
+				data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Delete&nbsp;&nbsp;&nbsp;&nbsp;">
+					&nbsp;&nbsp;&nbsp;&nbsp;Delete&nbsp;&nbsp;&nbsp;&nbsp;
+				</button>&nbsp;
+			</div>
+		</form>
+	</div>
+	</div>
+</div>
+<!-- [End] Confirm Delete: Modal Form -->
+
+
+
+	 <!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	
+		
+	<!-- jQuery -->
+	<script src="/js/jquery.validate.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/js/jquery.metadata.js" type="text/javascript"></script>
+	<script src="/scripts/jquery.cookie/jquery.cookie.js" type="text/javascript"></script>
+	<script src="/js/jquery.maskedinput-1.0.js" type="text/javascript"></script>
+	<script src="/js/jquery.prettyLoader.js" type="text/javascript"></script>
+
+	<!-- Bootstrap, Bootbox -->
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/scripts/datepicker/js/bootstrap-datepicker.js"></script>
+	<script src="/scripts/bootbox/bootbox.min.js"></script>
+	
+	<!-- Full Calender -->
+	<script type='text/javascript' src='/scripts/fullcalendar/fullcalendar/fullcalendar.min.js'></script>
+	
+	<!-- CK Editor -->
+	<script type="text/javascript" src="/scripts/ckeditor/ckeditor.js"></script>
+	<script type="text/javascript" src="/scripts/ckeditor/adapters/jquery.js"></script>
+	
+	<!-- Application code -->
+	<script type="text/javascript" src="/js/custom.js"></script>
+	
+	<!-- Upload utilities -->
+	<script src="/js/vendor/jquery.ui.widget.js"></script>
+	<script src="/js/jquery.iframe-transport.js"></script>
+	<script src="/js/jquery.fileupload.js"></script>
+	
+	
+<script type="text/javascript">
+
+	var mode = '';
+	
+	$(document).ready(function() {
+<?php if (!Struct_Registry::isAuthenticated()) { ?>
+		$("#loginForm").validate({
+			submitHandler: function (form) {
+				
+				
+				theme = 'util/authentication';
+				doUpdate('login', false, 'api/authentication/login', false, false, 
+				{
+					"element": "btnLogin",
+					"placement": "top",
+					"length": 4000
+				}, false, '/central');
+			}
+		});
+		$("#registerForm").validate({
+			submitHandler: function () {
+				theme = 'util/authentication';
+				doUpdate('register', false, 'api/authentication/register', false, false, 
+				{
+					"element": "btnRegister",
+					"placement": "top",
+					"length": 4000
+				}, false, '/central');
+			}
+		});
+<?php } ?>
+	});
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?php
+!isset($utilDisplay)
+	&& $utilDisplay = new Struct_Util_Display();
+$pager = $utilDisplay->buildPager(
+		"LibRepeaterTemplateGrid",
+		"lib-repeater-template-grid",
+		$this->result["LibRepeaterTemplate"]["Paging"]["CurrentPage"],
+		$this->result["LibRepeaterTemplate"]["Paging"]["TotalPages"],
+		$this->result["LibRepeaterTemplate"]["Paging"]["RecordsPerPage"]
+		);
+list($order, $direction) = each($this->result["LibRepeaterTemplate"]["Order"]);
+?>
+<div class="row-fluid">
+	<div class="span12">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th class=""><b>Lib Template</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "lib_repeater_template.name" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('libRepeaterTemplate', 'lib_repeater_template.name', 'asc');"></i>
+							<i class="icon-<?php echo "lib_repeater_template.name" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('libRepeaterTemplate', 'lib_repeater_template.name', 'desc');"></i>
+						</div>
+					</th>
+					<th class=""><b>Group Field</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "lib_repeater_template.group_field" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('libRepeaterTemplate', 'lib_repeater_template.group_field', 'asc');"></i>
+							<i class="icon-<?php echo "lib_repeater_template.group_field" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('libRepeaterTemplate', 'lib_repeater_template.group_field', 'desc');"></i>
+						</div>
+					</th>
+					<th width="50px" class="">
+						&nbsp;&nbsp;
+						<i class="icon-plus handy" onClick="addLibRepeaterTemplate();"></i>
+					</th>
+				</tr>
+				<tr class="">
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_libRepeaterTemplate_lib_template.name" type="text" class="span12 srch-libRepeaterTemplate"
+						value="<?php echo isset($this->result['LibRepeaterTemplate']['Search']['lib_template.name']) ? $this->result['LibRepeaterTemplate']['Search']['lib_template.name'] : ""; ?>"></div></td>
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_libRepeaterTemplate_lib_repeater_template.group_field" type="text" class="span12 srch-libRepeaterTemplate"
+						value="<?php echo isset($this->result['LibRepeaterTemplate']['Search']['lib_repeater_template.group_field']) ? $this->result['LibRepeaterTemplate']['Search']['lib_repeater_template.group_field'] : ""; ?>"></div></td>
+					<td width="50px" class="">
+						&nbsp;&nbsp;
+						<i class="icon-search handy" onClick="search('srch-libRepeaterTemplate');"></i>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->data["LibRepeaterTemplate"] as $id => $record) { ?>
+				<tr>
+					<td><?php echo $record["lib_template_name"]; ?></td>
+					<td><?php echo $record["group_field"]; ?></td>
+					<td>
+						<button type="button" class="btn btn-mini" onClick="editLibRepeaterTemplate(<?php echo $id; ?>);">Edit</button>
+					</td>
+				</tr>
+				<?php } ?>
+				<?php if (empty($this->data["LibRepeaterTemplate"])) { ?>
+				<tr>
+					<td>&nbsp;</td>
+					<td colspan="2">No items to display</td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
+</div>
+<?php echo $pager; ?>
+<script type="text/javascript">
+
+	var libRepeaterTemplateData = <?php echo Zend_Json::encode($this->data["LibRepeaterTemplate"]); ?>;
+
+	$(document).ready(function() {
+		$("#srch-action").click(function () {
+		  searchStack["srch-libRepeaterTemplate"]();
+		});
+		$(".srch-libRepeaterTemplate").keypress(function(e) {
+		    if(e.which == 13) {
+		    	searchStack["srch-libRepeaterTemplate"]();
+		    }
+		});
+	});
+	
+</script>

@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibNotificationLog: Data Grid -->
+<span id="LibNotificationLogGrid">
+<?php include_once("lib-notification-log-grid.phtml");?>
+</span>
+<!-- [End] LibNotificationLog: Data Grid -->
+
+<!-- LibNotificationLog: Modal Form -->
+<?php include_once("lib-notification-log-modal.phtml");?>
+<!-- [End] LibNotificationLog: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-notification-log";
+
+	$(document).ready(function() {
+		$("#navLibNotificationLog").addClass("active");
+		searchHandler["srch-libNotificationLog"] = {
+				action: theme + "/lib-notification-log-grid",
+				container: "LibNotificationLogGrid"
+		};
+    searchStack["srch-libNotificationLog"] = wrapFunction(search, this, ["srch-libNotificationLog"]);
+	});
+
+	function addLibNotificationLog(id) {
+		//$("#libNotificationLogModalHeading").html("Add New Lib Notification Log");
+		mode = "create";
+		clearForm("libNotificationLog", "modalLibNotificationLog");
+	}
+
+	function editLibNotificationLog(id) {
+		//$("#libNotificationLogModalHeading").html("Edit Lib Notification Log");
+		mode = "update";
+		populateForm("libNotificationLog", "lib_notification_log", libNotificationLogData[id], "modalLibNotificationLog");
+	}
+
+</script>

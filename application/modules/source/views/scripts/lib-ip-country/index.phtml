@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibIpCountry: Data Grid -->
+<span id="LibIpCountryGrid">
+<?php include_once("lib-ip-country-grid.phtml");?>
+</span>
+<!-- [End] LibIpCountry: Data Grid -->
+
+<!-- LibIpCountry: Modal Form -->
+<?php include_once("lib-ip-country-modal.phtml");?>
+<!-- [End] LibIpCountry: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-ip-country";
+
+	$(document).ready(function() {
+		$("#navLibIpCountry").addClass("active");
+		searchHandler["srch-libIpCountry"] = {
+				action: theme + "/lib-ip-country-grid",
+				container: "LibIpCountryGrid"
+		};
+    searchStack["srch-libIpCountry"] = wrapFunction(search, this, ["srch-libIpCountry"]);
+	});
+
+	function addLibIpCountry(id) {
+		//$("#libIpCountryModalHeading").html("Add New Lib Ip Country");
+		mode = "create";
+		clearForm("libIpCountry", "modalLibIpCountry");
+	}
+
+	function editLibIpCountry(id) {
+		//$("#libIpCountryModalHeading").html("Edit Lib Ip Country");
+		mode = "update";
+		populateForm("libIpCountry", "lib_ip_country", libIpCountryData[id], "modalLibIpCountry");
+	}
+
+</script>

@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- MobileContent: Data Grid -->
+<span id="MobileContentGrid">
+<?php include_once("mobile-content-grid.phtml");?>
+</span>
+<!-- [End] MobileContent: Data Grid -->
+
+<!-- MobileContent: Modal Form -->
+<?php include_once("mobile-content-modal.phtml");?>
+<!-- [End] MobileContent: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/mobile-content";
+
+	$(document).ready(function() {
+		$("#navMobileContent").addClass("active");
+		searchHandler["srch-mobileContent"] = {
+				action: "mobile-content-grid",
+				container: "MobileContentGrid"
+		};
+    searchStack["srch-mobileContent"] = wrapFunction(search, this, ["srch-mobileContent"]);
+	});
+
+	function addMobileContent(id) {
+		//$("#mobileContentModalHeading").html("Add New Mobile Content");
+		mode = "create";
+		clearForm("mobileContent", "modalMobileContent");
+	}
+
+	function editMobileContent(id) {
+		//$("#mobileContentModalHeading").html("Edit Mobile Content");
+		mode = "update";
+		populateForm("mobileContent", "mobile_content", mobileContentData[id], "modalMobileContent");
+	}
+
+</script>

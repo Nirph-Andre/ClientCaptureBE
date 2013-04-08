@@ -1,0 +1,40 @@
+
+<?php
+$utilDisplay = Struct_Registry::get("Util.Display");
+$this->authenticationGrid->publishIndex();
+?>
+
+<!-- Authentication: Modal Form -->
+<?php include_once("authentication-modal.phtml");?>
+<!-- [End] Authentication: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "default/authentication";
+
+	$(document).ready(function() {
+		$("#navAuthentication").addClass("active");
+		searchHandler["srch-authentication"] = {
+				action: "authentication-grid",
+				container: "AuthenticationGrid"
+		};
+        searchStack["srch-authentication"] = wrapFunction(search, this, ["srch-authentication"]);
+		$(".srch-authentication").keypress(function(e) {
+		    if(e.which == 13) {
+		    	searchStack["srch-authentication"]();
+		    }
+		});
+	});
+
+	function addAuthentication(id) {
+		$("#authenticationModalHeading").html("Add New Authentication");
+		clearForm("authentication", "modalAuthentication");
+	}
+
+	function editAuthentication(id) {
+		$("#authenticationModalHeading").html("Edit Authentication");
+		populateForm("authentication", "authentication", authenticationData[id], "modalAuthentication");
+	}
+
+</script>

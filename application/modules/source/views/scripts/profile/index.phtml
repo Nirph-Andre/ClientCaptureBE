@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Profile: Data Grid -->
+<span id="ProfileGrid">
+<?php include_once("profile-grid.phtml");?>
+</span>
+<!-- [End] Profile: Data Grid -->
+
+<!-- Profile: Modal Form -->
+<?php include_once("profile-modal.phtml");?>
+<!-- [End] Profile: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/profile";
+
+	$(document).ready(function() {
+		$("#navProfile").addClass("active");
+		searchHandler["srch-profile"] = {
+				action: theme + "/profile-grid",
+				container: "ProfileGrid"
+		};
+    searchStack["srch-profile"] = wrapFunction(search, this, ["srch-profile"]);
+	});
+
+	function addProfile(id) {
+		//$("#profileModalHeading").html("Add New Profile");
+		mode = "create";
+		clearForm("profile", "modalProfile");
+	}
+
+	function editProfile(id) {
+		//$("#profileModalHeading").html("Edit Profile");
+		mode = "update";
+		populateForm("profile", "profile", profileData[id], "modalProfile");
+	}
+
+</script>

@@ -1,0 +1,81 @@
+<!-- Config: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalConfig">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="configModalHeading">Edit Config</h3>
+	  </div>
+		<form id="configForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="config_date_format"><b>Date Format *</b></label>
+						<input id="config_date_format" name="date_format" type="text"
+							form-id="config" class="span8 required" maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="config_time_format"><b>Time Format *</b></label>
+						<input id="config_time_format" name="time_format" type="text"
+							form-id="config" class="span8 required" maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="config_currency_prefix"><b>Currency Prefix *</b></label>
+						<input id="config_currency_prefix" name="currency_prefix" type="text"
+							form-id="config" class="span4 required" maxlength="5">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="config_vat_percentage"><b>Vat Percentage</b></label>
+						<input id="config_vat_percentage" name="vat_percentage" type="text"
+							form-id="config" class="span4  number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="config_vat_percentage">
+			    		<input type="checkbox" id="config_vat_percentage" name="vat_percentage"
+			    			value="vat_percentage" form-id="config" checked>
+			    		&nbsp;<b>Vat Percentage</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+		    		<label for="config_notification_source_email"><b>Notification Source Email *</b></label>
+						<input id="config_notification_source_email" name="notification_source_email" type="text"
+							form-id="config" class="span12 required" maxlength="255">
+					</div>
+		  		<div class="control-group">
+		    		<label for="config_notification_source_number"><b>Notification Source Number *</b></label>
+						<input id="config_notification_source_number" name="notification_source_number" type="text"
+							form-id="config" class="span8 required" maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="config_administrative_email"><b>Administrative Email *</b></label>
+						<input id="config_administrative_email" name="administrative_email" type="text"
+							form-id="config" class="span12 required" maxlength="255">
+					</div>
+				<input type="hidden" id="config_id" name="id" form-id="config">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Config: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#configForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("config", "config", "api/data/" + mode,
+			  	"ConfigGrid", theme + "/config-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Town: Data Grid -->
+<span id="TownGrid">
+<?php include_once("town-grid.phtml");?>
+</span>
+<!-- [End] Town: Data Grid -->
+
+<!-- Town: Modal Form -->
+<?php include_once("town-modal.phtml");?>
+<!-- [End] Town: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/town";
+
+	$(document).ready(function() {
+		$("#navTown").addClass("active");
+		searchHandler["srch-town"] = {
+				action: theme + "/town-grid",
+				container: "TownGrid"
+		};
+    searchStack["srch-town"] = wrapFunction(search, this, ["srch-town"]);
+	});
+
+	function addTown(id) {
+		//$("#townModalHeading").html("Add New Town");
+		mode = "create";
+		clearForm("town", "modalTown");
+	}
+
+	function editTown(id) {
+		//$("#townModalHeading").html("Edit Town");
+		mode = "update";
+		populateForm("town", "town", townData[id], "modalTown");
+	}
+
+</script>

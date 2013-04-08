@@ -1,0 +1,64 @@
+<!-- MobileContent: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalMobileContent">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="mobileContentModalHeading">Edit Mobile Content</h3>
+	  </div>
+		<form id="mobileContentForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="mobileContent_type"><b>Type *</b></label>
+						<input id="mobileContent_type" name="type" type="text"
+							form-id="mobileContent" class="span8 required" maxlength="25">
+					</div>
+		  		<div class="control-group">
+		    		<label for="mobileContent_name"><b>Name *</b></label>
+						<input id="mobileContent_name" name="name" type="text"
+							form-id="mobileContent" class="span12 required" maxlength="250">
+					</div>
+		  		<div class="control-group">
+			  		<label for="mobileContent_html"><b>Html</b></label>
+						<textarea id="mobileContent_html" name="html" rows="5"
+							form-id="mobileContent" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+			  		<label for="mobileContent_js"><b>Js</b></label>
+						<textarea id="mobileContent_js" name="js" rows="5"
+							form-id="mobileContent" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+				  	<label for="mobileContent_updated"><b>Updated</b></label>
+						<input id="mobileContent_updated" name="updated" type="text"
+							form-id="mobileContent" class="span6 datepicker  datetime" >
+					</div>
+				<input type="hidden" id="mobileContent_id" name="id" form-id="mobileContent">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] MobileContent: Modal Form --><script src="/js/jquery-ui-timepicker-addon.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#mobileContentForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("mobileContent", "mobileContent", "api/data/" + mode,
+			  	"MobileContentGrid", "mobile-content-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

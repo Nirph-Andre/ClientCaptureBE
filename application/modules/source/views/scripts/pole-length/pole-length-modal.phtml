@@ -1,0 +1,49 @@
+<!-- PoleLength: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalPoleLength">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="poleLengthModalHeading">Edit Pole Length</h3>
+	  </div>
+		<form id="poleLengthForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="poleLength_name"><b>Name *</b></label>
+						<input id="poleLength_name" name="name" type="text"
+							form-id="poleLength" class="span12 required" maxlength="250">
+					</div>
+		  		<div class="control-group">
+				  	<label for="poleLength_updated"><b>Updated</b></label>
+						<input id="poleLength_updated" name="updated" type="text"
+							form-id="poleLength" class="span6 datepicker  datetime" >
+					</div>
+				<input type="hidden" id="poleLength_id" name="id" form-id="poleLength">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] PoleLength: Modal Form --><script src="/js/jquery-ui-timepicker-addon.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#poleLengthForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("poleLength", "poleLength", "api/data/" + mode,
+			  	"PoleLengthGrid", "pole-length-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

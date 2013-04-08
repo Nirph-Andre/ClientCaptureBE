@@ -1,0 +1,9 @@
+<?php if (!empty($this->video)) { ?>
+<div class="flowplayer">
+   <video type="<?php echo $this->video['mime_type']; ?>" src="/video?id=<?php echo $this->videoId; ?>" ></video>
+</div>
+<?php } else { ?>
+<br/><br/>
+<center><h5>Video not found.</h5></center>
+<br/><br/>
+<?php } ?>

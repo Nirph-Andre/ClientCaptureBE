@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- AssetDescription: Data Grid -->
+<span id="AssetDescriptionGrid">
+<?php include_once("asset-description-grid.phtml");?>
+</span>
+<!-- [End] AssetDescription: Data Grid -->
+
+<!-- AssetDescription: Modal Form -->
+<?php include_once("asset-description-modal.phtml");?>
+<!-- [End] AssetDescription: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/asset-description";
+
+	$(document).ready(function() {
+		$("#navAssetDescription").addClass("active");
+		searchHandler["srch-assetDescription"] = {
+				action: theme + "/asset-description-grid",
+				container: "AssetDescriptionGrid"
+		};
+    searchStack["srch-assetDescription"] = wrapFunction(search, this, ["srch-assetDescription"]);
+	});
+
+	function addAssetDescription(id) {
+		//$("#assetDescriptionModalHeading").html("Add New Asset Description");
+		mode = "create";
+		clearForm("assetDescription", "modalAssetDescription");
+	}
+
+	function editAssetDescription(id) {
+		//$("#assetDescriptionModalHeading").html("Edit Asset Description");
+		mode = "update";
+		populateForm("assetDescription", "asset_description", assetDescriptionData[id], "modalAssetDescription");
+	}
+
+</script>

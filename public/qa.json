@@ -1,0 +1,48 @@
+{
+    "event": "suiteStart",
+    "suite": "",
+    "tests": 13
+}{
+    "event": "suiteStart",
+    "suite": "Application Test Suite",
+    "tests": 13
+}{
+    "event": "suiteStart",
+    "suite": "Api_AmfTest",
+    "tests": 1
+}{
+    "event": "suiteStart",
+    "suite": "Api_DataTest",
+    "tests": 7
+}{
+    "event": "suiteStart",
+    "suite": "Api_XmlRpcTest",
+    "tests": 1
+}{
+    "event": "suiteStart",
+    "suite": "BusinessRule_AgentTest",
+    "tests": 3
+}{
+    "event": "suiteStart",
+    "suite": "Template_DataTest",
+    "tests": 1
+}{
+    "event": "testStart",
+    "suite": "Template_DataTest",
+    "test": "Template_DataTest::testPopulateTemplates"
+}{
+    "event": "test",
+    "suite": "Template_DataTest",
+    "test": "Template_DataTest::testPopulateTemplates",
+    "status": "pass",
+    "time": 0.5833740234375,
+    "trace": [
+
+    ],
+    "message": "",
+    "output": ""
+}{
+    "event": "suiteStart",
+    "suite": "Library Test Suite",
+    "tests": 0
+}

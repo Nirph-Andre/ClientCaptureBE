@@ -1,0 +1,62 @@
+<!-- LibRegion: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalLibRegion">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libRegionModalHeading">Edit Lib Region</h3>
+	  </div>
+		<form id="libRegionForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+				  	<label for="libRegion_lib_country_id"><b>Lib Country *</b></label>
+						<select id="libRegion_lib_country_id" name="lib_country_id"
+							form-id="libRegion" class="span12 required" >
+							<option value="">-- Select Lib Country * --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibCountry"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="libRegion_name"><b>Name *</b></label>
+						<input id="libRegion_name" name="name" type="text"
+							form-id="libRegion" class="span12 required" maxlength="75">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libRegion_iso3166_2_code"><b>Iso3166_2 Code</b></label>
+						<input id="libRegion_iso3166_2_code" name="iso3166_2_code" type="text"
+							form-id="libRegion" class="span4 " maxlength="2">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libRegion_fips10_4_code"><b>Fips10_4 Code</b></label>
+						<input id="libRegion_fips10_4_code" name="fips10_4_code" type="text"
+							form-id="libRegion" class="span4 " maxlength="2">
+					</div>
+				<input type="hidden" id="libRegion_id" name="id" form-id="libRegion">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibRegion: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libRegionForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libRegion", "libRegion", "api/data/" + mode,
+			  	"LibRegionGrid", theme + "/lib-region-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

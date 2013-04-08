@@ -1,0 +1,58 @@
+<!-- Authentication: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalAuthentication">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="authenticationModalHeading">Edit Authentication</h3>
+	  </div>
+		<form id="authenticationForm" class="modal-form validation-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+	    		<label for="authentication_display_name"><b>Display Name *</b></label>
+				<input id="authentication_display_name" name="display_name" type="text"
+					form-id="authentication" class="span12 validate[required,maxSize[50]]">
+	    		<label for="authentication_email"><b>Email *</b></label>
+				<input id="authentication_email" name="email" type="text"
+					form-id="authentication" class="span12 validate[required,maxSize[255]]">
+			  	<label for="authentication_status"><b>Status</b></label>
+				<select id="authentication_status" name="status"
+					form-id="authentication" class="span12 ">
+					<option value="">-- Select Status --</option>
+					<option value="Pending">Pending</option>
+<option value="Active">Active</option>
+<option value="Locked">Locked</option>
+
+				</select>
+				<input type="hidden" id="authentication_id" name="id" form-id="authentication">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Authentication: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#authenticationForm").validationEngine({promptPosition : "topLeft"});
+		$("#authenticationForm").validationEngine("attach");
+		$("#authenticationForm").submit(function () {
+			if ($("#authenticationForm").validationEngine("validate")) {
+				doUpdate("authentication", 
+						"authentication-save", 
+						"AuthenticationGrid", 
+						"authentication-grid",
+						false, true);
+				return false;
+			}
+		});
+	});
+</script>

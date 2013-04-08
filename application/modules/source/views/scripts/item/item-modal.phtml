@@ -1,0 +1,43 @@
+<!-- Item: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalItem">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="itemModalHeading">Edit Item</h3>
+	  </div>
+		<form id="itemForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="item_name"><b>Name *</b></label>
+						<input id="item_name" name="name" type="text"
+							form-id="item" class="span12 required" maxlength="100">
+					</div>
+				<input type="hidden" id="item_id" name="id" form-id="item">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Item: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#itemForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("item", "item", "api/data/" + mode,
+			  	"ItemGrid", theme + "/item-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

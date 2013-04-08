@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- AppAuditLog: Data Grid -->
+<span id="AppAuditLogGrid">
+<?php include_once("app-audit-log-grid.phtml");?>
+</span>
+<!-- [End] AppAuditLog: Data Grid -->
+
+<!-- AppAuditLog: Modal Form -->
+<?php include_once("app-audit-log-modal.phtml");?>
+<!-- [End] AppAuditLog: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/app-audit-log";
+
+	$(document).ready(function() {
+		$("#navAppAuditLog").addClass("active");
+		searchHandler["srch-appAuditLog"] = {
+				action: theme + "/app-audit-log-grid",
+				container: "AppAuditLogGrid"
+		};
+    searchStack["srch-appAuditLog"] = wrapFunction(search, this, ["srch-appAuditLog"]);
+	});
+
+	function addAppAuditLog(id) {
+		//$("#appAuditLogModalHeading").html("Add New App Audit Log");
+		mode = "create";
+		clearForm("appAuditLog", "modalAppAuditLog");
+	}
+
+	function editAppAuditLog(id) {
+		//$("#appAuditLogModalHeading").html("Edit App Audit Log");
+		mode = "update";
+		populateForm("appAuditLog", "app_audit_log", appAuditLogData[id], "modalAppAuditLog");
+	}
+
+</script>

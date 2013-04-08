@@ -1,0 +1,146 @@
+
+<script type="text/javascript" src="/js/underscore-min.js"></script>
+<script type="text/javascript" src="/js/backbone-min.js"></script>
+<script type="text/javascript" src="/js/jsonreport.js"></script>
+<style type="text/css">
+        BODY {
+            font: 14px Verdana, Arial;
+            color: #444;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-y: scroll;
+        }
+        H1 {
+          margin:0;
+          font: 24px Helvetica, Verdana, Arial;
+          padding: 20px 0 10px 0;
+          background: #FBFBFB;
+          border-bottom: solid 1px #fff;
+        }
+        A {
+          color: #093;
+          text-decoration: none;
+        }
+        A:hover {
+          text-decoration: underline;
+        }
+        #usage {
+            border-top: solid 1px #dfdfdf;
+            border-bottom: solid 1px #dfdfdf;
+            margin: 0 0 10px 0;
+            padding: 5px;
+            background: #f1f1f1;
+            line-height: 20px;
+            text-align: center;
+        }
+        TEXTAREA {
+            width: 990px;
+            height: 100px;
+        }
+        BUTTON {
+            margin: 20px;
+            padding: 4px 8px;
+        }
+        #use {
+            clear: both;
+            border: 1px solid #ccc;
+            margin: auto;
+            width: 960px;
+        }
+        #use H4 {
+            margin: 0;
+            padding: 5px;
+            background: #ccc;
+            color: #fff;
+            text-shadow: 1px 1px 1px #444;
+            font-size: 18px;
+            font-weight: normal;
+        }
+        PRE {
+            background: #f1f1f1;
+            padding: 4px 8px;
+            color:#000;
+            text-shadow: 0 1px 0 #fff;
+        }
+        .jsonreport {
+            text-align:left;
+            position: absolute;
+            left: 50%;
+            background: #fff;
+            width: 1000px;
+            margin-left: -500px;
+            overflow: auto;
+        }
+    </style>
+    
+    
+    
+    <h1>
+        Online <a href="https://github.com/ServiceStack/ServiceStack/wiki/HTML5ReportFormat">HTML5 JSON Report format</a>
+        to view any JSON data in a human-readable HTML view
+    </h1>
+
+    <div id="usage">
+        <strong>Usage:</strong> Paste JSON text in the TEXTAREA below and click <b>View JSON Report</b> button.
+    </div>
+
+    <textarea class="json"><?php include('/qa.json');?></textarea>
+
+    <div>
+        <button onclick="document.getElementById('use').style.display='none'; document.getElementsByClassName('jsonreport')[0].innerHTML=_.jsonreport( document.getElementsByClassName('json')[0].value );">View JSON Report</button>
+    </div>
+
+    <div class="jsonreport"></div>
+
+    <div id="use">
+        <h4>Use jsonreport.js in your own pages</h4>
+        <p>
+            <b><a href="https://github.com/AjaxStack/AjaxStack/blob/master/src/jsonreport/jsonreport.js">jsonreport.js</a></b> is a stand-alone javascript library you can
+            embed in your own pages by adding a reference to the js library:
+        </p>
+        <pre>&lt;script type="text/javascript" src="jsonreport.js"&gt;&lt;/script&gt;</pre>
+        <p>
+            this adds the function <b>_.jsonreport(json)</b> you can call to turn your JSON into human-readable HTML. e.g:
+        </p>
+
+        <pre>var html = _.jsonreport('{"any":"json data"}');</pre>
+
+        <p>
+            Note: to use the default jsonreport styles, add the <b>.jsonreport</b> className to the containing element, e.g:
+        </p>
+
+        <pre>&lt;div class="jsonreport"&gt;&lt;div&gt;</pre>
+
+        <p>
+            Complete example:
+        </p>
+        <pre>document.getElementsByClassName('jsonreport')[0].innerHTML = _.jsonreport('{"any":"json data"}');</pre>
+
+        <p>
+            Leave feedback on the project website:
+            <a href="https://github.com/AjaxStack/AjaxStack/">https://github.com/AjaxStack/AjaxStack/</a>
+            or <a href="http://twitter.com/demisbellot">@demisbellot</a> on twitter.
+        </p>
+    </div>
+
+    <script type="text/javascript">
+       document.getElementsByClassName('json')[0].focus();
+    </script>
+
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-7722718-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+    
+    

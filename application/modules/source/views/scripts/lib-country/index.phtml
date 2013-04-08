@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibCountry: Data Grid -->
+<span id="LibCountryGrid">
+<?php include_once("lib-country-grid.phtml");?>
+</span>
+<!-- [End] LibCountry: Data Grid -->
+
+<!-- LibCountry: Modal Form -->
+<?php include_once("lib-country-modal.phtml");?>
+<!-- [End] LibCountry: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-country";
+
+	$(document).ready(function() {
+		$("#navLibCountry").addClass("active");
+		searchHandler["srch-libCountry"] = {
+				action: theme + "/lib-country-grid",
+				container: "LibCountryGrid"
+		};
+    searchStack["srch-libCountry"] = wrapFunction(search, this, ["srch-libCountry"]);
+	});
+
+	function addLibCountry(id) {
+		//$("#libCountryModalHeading").html("Add New Lib Country");
+		mode = "create";
+		clearForm("libCountry", "modalLibCountry");
+	}
+
+	function editLibCountry(id) {
+		//$("#libCountryModalHeading").html("Edit Lib Country");
+		mode = "update";
+		populateForm("libCountry", "lib_country", libCountryData[id], "modalLibCountry");
+	}
+
+</script>

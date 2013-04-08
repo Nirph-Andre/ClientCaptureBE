@@ -1,0 +1,53 @@
+<!-- LibPerson: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalLibPerson">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libPersonModalHeading">Edit Lib Person</h3>
+	  </div>
+		<form id="libPersonForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="libPerson_first_name"><b>First Name *</b></label>
+						<input id="libPerson_first_name" name="first_name" type="text"
+							form-id="libPerson" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libPerson_family_name"><b>Family Name *</b></label>
+						<input id="libPerson_family_name" name="family_name" type="text"
+							form-id="libPerson" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libPerson_id_number"><b>Id Number *</b></label>
+						<input id="libPerson_id_number" name="id_number" type="text"
+							form-id="libPerson" class="span6 required" maxlength="13">
+					</div>
+				<input type="hidden" id="libPerson_id" name="id" form-id="libPerson">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibPerson: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libPersonForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libPerson", "libPerson", "api/data/" + mode,
+			  	"LibPersonGrid", theme + "/lib-person-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

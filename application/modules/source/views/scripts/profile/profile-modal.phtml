@@ -1,0 +1,114 @@
+<!-- Profile: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalProfile">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="profileModalHeading">Edit Profile</h3>
+	  </div>
+		<form id="profileForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="profile_first_name"><b>First Name *</b></label>
+						<input id="profile_first_name" name="first_name" type="text"
+							form-id="profile" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="profile_family_name"><b>Family Name *</b></label>
+						<input id="profile_family_name" name="family_name" type="text"
+							form-id="profile" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="profile_id_number"><b>Id Number</b></label>
+						<input id="profile_id_number" name="id_number" type="text"
+							form-id="profile" class="span6 " maxlength="13">
+					</div>
+		  		<div class="control-group">
+				  	<label for="profile_date_of_birth"><b>Date Of Birth</b></label>
+	        	<input id="profile_date_of_birth" name="date_of_birth" type="text"
+	            	form-id="profile" class="span4 datepicker  date" >
+					</div>
+		  		<div class="control-group">
+		    		<label for="profile_mobile"><b>Mobile *</b></label>
+						<input id="profile_mobile" name="mobile" type="text"
+							form-id="profile" class="span8 required" maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="profile_email"><b>Email</b></label>
+						<input id="profile_email" name="email" type="text"
+							form-id="profile" class="span12 " maxlength="255">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="profile_username"><b>Username *</b></label>
+						<input id="profile_username" name="username" type="text"
+							form-id="profile" class="span10 required" maxlength="40">
+					</div>
+		  		<div class="control-group">
+				  	<label for="profile_user_type"><b>User Type</b></label>
+						<select id="profile_user_type" name="user_type"
+							form-id="profile" class="span12 " >
+							<option value="">-- Select User Type --</option>
+							<option value="User">User</option>
+<option value="Administrator">Administrator</option>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+				  	<label for="profile_status"><b>Status</b></label>
+						<select id="profile_status" name="status"
+							form-id="profile" class="span12 " >
+							<option value="">-- Select Status --</option>
+							<option value="Active">Active</option>
+<option value="Suspended">Suspended</option>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="profile_subscribe_newsletter">
+			    		<input type="checkbox" id="profile_subscribe_newsletter" name="subscribe_newsletter"
+			    			value="subscribe_newsletter" form-id="profile" checked>
+			    		&nbsp;<b>Subscribe Newsletter</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="profile_subscribe_reminders">
+			    		<input type="checkbox" id="profile_subscribe_reminders" name="subscribe_reminders"
+			    			value="subscribe_reminders" form-id="profile" checked>
+			    		&nbsp;<b>Subscribe Reminders</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+				  	<label for="profile_last_login"><b>Last Login</b></label>
+						<input id="profile_last_login" name="last_login" type="text"
+							form-id="profile" class="span6 datepicker  datetime" >
+					</div>
+				<input type="hidden" id="profile_id" name="id" form-id="profile">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Profile: Modal Form --><script src="/js/jquery-ui-timepicker-addon.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#profileForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("profile", "profile", "api/data/" + mode,
+			  	"ProfileGrid", theme + "/profile-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

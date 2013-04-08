@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Owner: Data Grid -->
+<span id="OwnerGrid">
+<?php include_once("owner-grid.phtml");?>
+</span>
+<!-- [End] Owner: Data Grid -->
+
+<!-- Owner: Modal Form -->
+<?php include_once("owner-modal.phtml");?>
+<!-- [End] Owner: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/owner";
+
+	$(document).ready(function() {
+		$("#navOwner").addClass("active");
+		searchHandler["srch-owner"] = {
+				action: theme + "/owner-grid",
+				container: "OwnerGrid"
+		};
+    searchStack["srch-owner"] = wrapFunction(search, this, ["srch-owner"]);
+	});
+
+	function addOwner(id) {
+		//$("#ownerModalHeading").html("Add New Owner");
+		mode = "create";
+		clearForm("owner", "modalOwner");
+	}
+
+	function editOwner(id) {
+		//$("#ownerModalHeading").html("Edit Owner");
+		mode = "update";
+		populateForm("owner", "owner", ownerData[id], "modalOwner");
+	}
+
+</script>

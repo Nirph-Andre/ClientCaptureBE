@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibAddress: Data Grid -->
+<span id="LibAddressGrid">
+<?php include_once("lib-address-grid.phtml");?>
+</span>
+<!-- [End] LibAddress: Data Grid -->
+
+<!-- LibAddress: Modal Form -->
+<?php include_once("lib-address-modal.phtml");?>
+<!-- [End] LibAddress: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-address";
+
+	$(document).ready(function() {
+		$("#navLibAddress").addClass("active");
+		searchHandler["srch-libAddress"] = {
+				action: theme + "/lib-address-grid",
+				container: "LibAddressGrid"
+		};
+    searchStack["srch-libAddress"] = wrapFunction(search, this, ["srch-libAddress"]);
+	});
+
+	function addLibAddress(id) {
+		//$("#libAddressModalHeading").html("Add New Lib Address");
+		mode = "create";
+		clearForm("libAddress", "modalLibAddress");
+	}
+
+	function editLibAddress(id) {
+		//$("#libAddressModalHeading").html("Edit Lib Address");
+		mode = "update";
+		populateForm("libAddress", "lib_address", libAddressData[id], "modalLibAddress");
+	}
+
+</script>

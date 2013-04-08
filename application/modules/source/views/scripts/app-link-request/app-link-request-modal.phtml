@@ -1,0 +1,90 @@
+<!-- AppLinkRequest: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalAppLinkRequest">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="appLinkRequestModalHeading">Edit App Link Request</h3>
+	  </div>
+		<form id="appLinkRequestForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+				  	<label for="appLinkRequest_profile_id"><b>Profile *</b></label>
+						<select id="appLinkRequest_profile_id" name="profile_id"
+							form-id="appLinkRequest" class="span12 required" >
+							<option value="">-- Select Profile * --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listProfile"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="appLinkRequest_device_os"><b>Device Os *</b></label>
+						<input id="appLinkRequest_device_os" name="device_os" type="text"
+							form-id="appLinkRequest" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="appLinkRequest_device_cpu"><b>Device Cpu *</b></label>
+						<input id="appLinkRequest_device_cpu" name="device_cpu" type="text"
+							form-id="appLinkRequest" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="appLinkRequest_ip_address"><b>Ip Address *</b></label>
+						<input id="appLinkRequest_ip_address" name="ip_address" type="text"
+							form-id="appLinkRequest" class="span8 required" maxlength="23">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label class="checkbox" for="appLinkRequest_is_blacklisted">
+			    		<input type="checkbox" id="appLinkRequest_is_blacklisted" name="is_blacklisted"
+			    			value="is_blacklisted" form-id="appLinkRequest" checked>
+			    		&nbsp;<b>Is Blacklisted</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="appLinkRequest_is_disabled">
+			    		<input type="checkbox" id="appLinkRequest_is_disabled" name="is_disabled"
+			    			value="is_disabled" form-id="appLinkRequest" checked>
+			    		&nbsp;<b>Is Disabled</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+				  	<label for="appLinkRequest_status"><b>Status</b></label>
+						<select id="appLinkRequest_status" name="status"
+							form-id="appLinkRequest" class="span12 " >
+							<option value="">-- Select Status --</option>
+							<option value="Requested">Requested</option>
+<option value="Active">Active</option>
+<option value="Disabled">Disabled</option>
+<option value="BlackListed">BlackListed</option>
+<option value="Archived">Archived</option>
+
+						</select>
+					</div>
+				<input type="hidden" id="appLinkRequest_id" name="id" form-id="appLinkRequest">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] AppLinkRequest: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#appLinkRequestForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("appLinkRequest", "appLinkRequest", "api/data/" + mode,
+			  	"AppLinkRequestGrid", theme + "/app-link-request-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

@@ -1,0 +1,64 @@
+<!-- LibIpCountry: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalLibIpCountry">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libIpCountryModalHeading">Edit Lib Ip Country</h3>
+	  </div>
+		<form id="libIpCountryForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="libIpCountry_provider"><b>Provider</b></label>
+						<input id="libIpCountry_provider" name="provider" type="text"
+							form-id="libIpCountry" class="span12 " maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libIpCountry_assigned"><b>Assigned</b></label>
+						<input id="libIpCountry_assigned" name="assigned" type="text"
+							form-id="libIpCountry" class="span6 " maxlength="12">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="libIpCountry_country_code"><b>Country Code *</b></label>
+						<input id="libIpCountry_country_code" name="country_code" type="text"
+							form-id="libIpCountry" class="span4 required" maxlength="2">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libIpCountry_country_short"><b>Country Short *</b></label>
+						<input id="libIpCountry_country_short" name="country_short" type="text"
+							form-id="libIpCountry" class="span4 required" maxlength="3">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libIpCountry_country_name"><b>Country Name *</b></label>
+						<input id="libIpCountry_country_name" name="country_name" type="text"
+							form-id="libIpCountry" class="span12 required" maxlength="100">
+					</div>
+				<input type="hidden" id="libIpCountry_id" name="id" form-id="libIpCountry">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibIpCountry: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libIpCountryForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libIpCountry", "libIpCountry", "api/data/" + mode,
+			  	"LibIpCountryGrid", theme + "/lib-ip-country-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

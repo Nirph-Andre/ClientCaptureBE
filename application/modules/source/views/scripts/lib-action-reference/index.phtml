@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibActionReference: Data Grid -->
+<span id="LibActionReferenceGrid">
+<?php include_once("lib-action-reference-grid.phtml");?>
+</span>
+<!-- [End] LibActionReference: Data Grid -->
+
+<!-- LibActionReference: Modal Form -->
+<?php include_once("lib-action-reference-modal.phtml");?>
+<!-- [End] LibActionReference: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-action-reference";
+
+	$(document).ready(function() {
+		$("#navLibActionReference").addClass("active");
+		searchHandler["srch-libActionReference"] = {
+				action: theme + "/lib-action-reference-grid",
+				container: "LibActionReferenceGrid"
+		};
+    searchStack["srch-libActionReference"] = wrapFunction(search, this, ["srch-libActionReference"]);
+	});
+
+	function addLibActionReference(id) {
+		//$("#libActionReferenceModalHeading").html("Add New Lib Action Reference");
+		mode = "create";
+		clearForm("libActionReference", "modalLibActionReference");
+	}
+
+	function editLibActionReference(id) {
+		//$("#libActionReferenceModalHeading").html("Edit Lib Action Reference");
+		mode = "update";
+		populateForm("libActionReference", "lib_action_reference", libActionReferenceData[id], "modalLibActionReference");
+	}
+
+</script>

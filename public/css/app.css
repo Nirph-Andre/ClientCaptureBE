@@ -1,0 +1,309 @@
+/* Add additional stylesheets below
+-------------------------------------------------- */
+
+
+body {
+	background: #eee;
+}
+
+label {
+	font-weight: bold;
+}
+
+
+/* Pretty data tags -oO-
+-------------------------------------------------- */
+.tags
+{
+	width:auto;
+	margin:0px 0px 0px 0px;
+	list-style:none;
+	overflow:hidden;
+}
+#dataTags .tags li
+{
+	height:27px;
+	white-space:nowrap;
+	float:left;
+	margin-bottom:0px;
+	background:transparent url("/img/tag-01.png") no-repeat;
+	padding:0 0 0 13px;
+	margin-right:10px;
+}
+#dataTags .tags li span
+{
+	display:block;
+	height:23px;
+	padding:2px 8px 0 2px;
+	color:#333;
+	background:transparent url("/img/tag-02.png") no-repeat right top;
+	text-decoration:none;
+}
+
+
+
+
+
+
+/* Form Modifications
+-------------------------------------------------- */
+.form-actions
+{
+	padding:0px 0px 18px;
+	margin-top:0px;
+	margin-bottom:0px;
+	background-color:#ffffff;
+	border-top:1px solid #ffffff;*zoom:1;
+}
+
+
+.form-modal
+{
+	margin-bottom:0;
+}
+
+.form-modal-footer
+{
+	
+	padding:14px 15px 15px;
+	margin-top:20px;
+	margin-bottom:-18px;
+	text-align:right;
+	background-color:#f5f5f5;
+	border-top:1px solid #ddd;
+	-webkit-border-radius:0 0 6px 6px;
+	-moz-border-radius:0 0 6px 6px;
+	border-radius:0 0 6px 6px;
+	-webkit-box-shadow:inset 0 1px 0 #ffffff;
+	-moz-box-shadow:inset 0 1px 0 #ffffff;
+	box-shadow:inset 0 1px 0 #ffffff;
+	*zoom:1;
+	
+}
+
+.form-modal-footer:before,.form-modal-footer:after
+{
+	display:table;
+	content:"";
+}
+
+.control-group
+{
+	padding-left:20px;
+}
+
+
+
+/* Sortable list 
+-------------------------------------------------- */
+.handle {
+	float: left;
+	cursor: move;
+}
+
+
+
+
+/* Pager - Number of records
+-------------------------------------------------- */
+.pagination-records
+{
+	padding-top: 10px;
+}
+
+
+
+/* Timepicker styles
+-------------------------------------------------- */
+.ui-timepicker-div .ui-widget-header 
+{ margin-bottom: 8px; }
+.ui-timepicker-div dl 
+{ text-align: left; }
+.ui-timepicker-div dl dt 
+{ height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd 
+{ margin: 0 10px 10px 65px; }
+.ui-timepicker-div td 
+{ font-size: 90%; }
+.ui-tpicker-grid-label 
+{ background: none; border: none; margin: 0; padding: 0; }
+
+
+
+/* Silver lining box
+-------------------------------------------------- */
+.box-bordered {
+	border:1px solid #dddddd;
+	border-collapse:separate;
+	*border-collapse:collapsed;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	padding:19px;
+	margin-bottom:20px;
+}
+.box-bordered-fixed {
+	border:1px solid #dddddd;
+	border-collapse:separate;
+	*border-collapse:collapsed;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	border-radius:6px;
+	padding:19px;
+	margin-bottom:20px;
+	height:339px;
+}
+.box-gradient {
+	border:1px solid #bbbbbb;
+	border-top: none;
+	border-left: none;
+	padding: 20px;
+	margin-bottom: none;
+	height: 100px;
+	background-image: -webkit-linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,.1));
+	background-image:    -moz-linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,.1));
+	background-image:     -ms-linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,.1));
+	background-image:      -o-linear-gradient(top, rgba(0,0,0,.05), rgba(0,0,0,.1));	
+}
+.center {
+	text-align: center;	
+}
+.handy {
+	cursor: hand;
+	cursor: pointer;
+}
+
+
+
+
+/* Extra font stuff
+-------------------------------------------------- */
+.text-small {
+	font-size: 10px;
+}
+.text-smaller {
+	font-size: 12px;
+}
+.text-larger {
+	font-size: 16px;
+}
+.text-large {
+	font-size: 20px;
+}
+.text-huge {
+	font-size: 28px;
+}
+.text-hectic {
+	font-size: 38px;
+}
+
+.dark-gray {
+	color: #333333;
+}
+
+.red {
+	color: #CC0000;
+}
+
+.green {
+	color: #009900;
+}
+
+.blue {
+	color: #000099;
+}
+
+
+
+
+/* Button size modifications
+-------------------------------------------------- */
+.btn-width-thin {
+	width: 100px;
+}
+
+.btn-width-medium {
+	width: 150px;
+}
+
+.btn-width-thick {
+	width: 200px;
+}
+
+.input-width-login {
+	width: 185px;
+}
+
+.form-width-login {
+	width: 250px;
+}
+
+
+
+
+/* Transparency modification
+-------------------------------------------------- */
+.transparent {
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+}
+
+
+
+
+
+
+
+/* Modal size modifications
+-------------------------------------------------- */
+.modal-wider {
+	width: 650px;
+	margin-left: -325px;
+}
+.modal-wide {
+	width: 800px;
+	margin-left: -400px;
+}
+.modal-thinner {
+	width: 450px;
+	margin-left: -225px;
+}
+.modal-thin {
+	width: 300px;
+	margin-left: -150px;
+}
+.modal-short {
+  max-height: 300px;
+  padding: 15px;
+  overflow-y: auto;	
+}
+.modal-shorter {
+  max-height: 275px;
+  padding: 15px;
+  overflow-y: auto;	
+}
+.modal-down {
+  margin-top:-150px;
+}
+.modal-downn {
+  margin-top:-125px;
+}
+.modal-high {
+  max-height: 525px;
+  padding: 15px;
+  overflow-y: auto;	
+}
+.modal-higher {
+  max-height: 560px;
+  padding: 15px;
+  overflow-y: auto;	
+}
+.modal-up {
+  margin-top:-60px;
+}
+.modal-upp {
+  margin-top:-80px;
+}
+
+
+

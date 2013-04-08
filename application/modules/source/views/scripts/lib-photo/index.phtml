@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibPhoto: Data Grid -->
+<span id="LibPhotoGrid">
+<?php include_once("lib-photo-grid.phtml");?>
+</span>
+<!-- [End] LibPhoto: Data Grid -->
+
+<!-- LibPhoto: Modal Form -->
+<?php include_once("lib-photo-modal.phtml");?>
+<!-- [End] LibPhoto: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-photo";
+
+	$(document).ready(function() {
+		$("#navLibPhoto").addClass("active");
+		searchHandler["srch-libPhoto"] = {
+				action: theme + "/lib-photo-grid",
+				container: "LibPhotoGrid"
+		};
+    searchStack["srch-libPhoto"] = wrapFunction(search, this, ["srch-libPhoto"]);
+	});
+
+	function addLibPhoto(id) {
+		//$("#libPhotoModalHeading").html("Add New Lib Photo");
+		mode = "create";
+		clearForm("libPhoto", "modalLibPhoto");
+	}
+
+	function editLibPhoto(id) {
+		//$("#libPhotoModalHeading").html("Edit Lib Photo");
+		mode = "update";
+		populateForm("libPhoto", "lib_photo", libPhotoData[id], "modalLibPhoto");
+	}
+
+</script>

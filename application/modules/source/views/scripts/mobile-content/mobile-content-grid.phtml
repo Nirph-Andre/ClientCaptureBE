@@ -1,0 +1,104 @@
+<?php
+!isset($utilDisplay)
+	&& $utilDisplay = new Struct_Util_Display();
+$pager = $utilDisplay->buildPager(
+		"MobileContentGrid",
+		"mobile-content-grid",
+		$this->result["MobileContent"]["Paging"]["CurrentPage"],
+		$this->result["MobileContent"]["Paging"]["TotalPages"],
+		$this->result["MobileContent"]["Paging"]["RecordsPerPage"]
+		);
+list($order, $direction) = each($this->result["MobileContent"]["Order"]);
+?>
+<div class="row-fluid">
+	<div class="span12">
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th class=""><b>Type</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "mobile_content.type" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('mobileContent', 'mobile_content.type', 'asc');"></i>
+							<i class="icon-<?php echo "mobile_content.type" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('mobileContent', 'mobile_content.type', 'desc');"></i>
+						</div>
+					</th>
+					<th class=""><b>Name</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "mobile_content.name" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('mobileContent', 'mobile_content.name', 'asc');"></i>
+							<i class="icon-<?php echo "mobile_content.name" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('mobileContent', 'mobile_content.name', 'desc');"></i>
+						</div>
+					</th>
+					<th class=""><b>Created</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "mobile_content.created" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('mobileContent', 'mobile_content.created', 'asc');"></i>
+							<i class="icon-<?php echo "mobile_content.created" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('mobileContent', 'mobile_content.created', 'desc');"></i>
+						</div>
+					</th>
+					<th class=""><b>Updated</b>
+						<div class="pull-right">
+							<i class="icon-<?php echo "mobile_content.updated" == $order && "ASC" == $direction ? "" : "circle-"; ?>arrow-down handy" onClick="order('mobileContent', 'mobile_content.updated', 'asc');"></i>
+							<i class="icon-<?php echo "mobile_content.updated" == $order && "DESC" == $direction ? "" : "circle-"; ?>arrow-up handy" onClick="order('mobileContent', 'mobile_content.updated', 'desc');"></i>
+						</div>
+					</th>
+					<th width="50px" class="">
+						&nbsp;&nbsp;
+						<i class="icon-plus handy" onClick="addMobileContent();"></i>
+					</th>
+				</tr>
+				<tr class="">
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_mobileContent_mobile_content.type" type="text" class="span12 srch-mobileContent"
+						value="<?php echo isset($this->result['MobileContent']['Search']['mobile_content.type']) ? $this->result['MobileContent']['Search']['mobile_content.type'] : ""; ?>"></div></td>
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_mobileContent_mobile_content.name" type="text" class="span12 srch-mobileContent"
+						value="<?php echo isset($this->result['MobileContent']['Search']['mobile_content.name']) ? $this->result['MobileContent']['Search']['mobile_content.name'] : ""; ?>"></div></td>
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_mobileContent_mobile_content.created" type="text" class="span12 srch-mobileContent"
+						value="<?php echo isset($this->result['MobileContent']['Search']['mobile_content.created']) ? $this->result['MobileContent']['Search']['mobile_content.created'] : ""; ?>"></div></td>
+					<td class=""><div class="row-fluid"><input 
+						id="a" name="srch_mobileContent_mobile_content.updated" type="text" class="span12 srch-mobileContent"
+						value="<?php echo isset($this->result['MobileContent']['Search']['mobile_content.updated']) ? $this->result['MobileContent']['Search']['mobile_content.updated'] : ""; ?>"></div></td>
+					<td width="50px" class="">
+						&nbsp;&nbsp;
+						<i class="icon-search handy" onClick="search('srch-mobileContent');"></i>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach ($this->data["MobileContent"] as $id => $record) { ?>
+				<tr>
+					<td><?php echo $record["mobile_content_type"]; ?></td>
+					<td><?php echo $record["mobile_content_name"]; ?></td>
+					<td><?php echo $record["mobile_content_created"]; ?></td>
+					<td><?php echo $record["mobile_content_updated"]; ?></td>
+					<td>
+						<button type="button" class="btn btn-mini" onClick="editMobileContent(<?php echo $id; ?>);">Edit</button>
+					</td>
+				</tr>
+				<?php } ?>
+				<?php if (empty($this->data["MobileContent"])) { ?>
+				<tr>
+					<td>&nbsp;</td>
+					<td colspan="4">No items to display</td>
+				</tr>
+				<?php } ?>
+			</tbody>
+		</table>
+	</div>
+</div>
+<?php echo echo $pager; ?>
+<script type="text/javascript">
+
+	var mobileContentData = <?php echo Zend_Json::encode($this->data["MobileContent"]); ?>;
+
+	$(document).ready(function() {
+		$("#srch-action").click(function () {
+		  searchStack["srch-mobileContent"]();
+		});
+		$(".srch-mobileContent").keypress(function(e) {
+		    if(e.which == 13) {
+		    	searchStack["srch-mobileContent"]();
+		    }
+		});
+	});
+	
+</script>

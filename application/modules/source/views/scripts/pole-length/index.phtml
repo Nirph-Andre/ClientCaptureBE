@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- PoleLength: Data Grid -->
+<span id="PoleLengthGrid">
+<?php include_once("pole-length-grid.phtml");?>
+</span>
+<!-- [End] PoleLength: Data Grid -->
+
+<!-- PoleLength: Modal Form -->
+<?php include_once("pole-length-modal.phtml");?>
+<!-- [End] PoleLength: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/pole-length";
+
+	$(document).ready(function() {
+		$("#navPoleLength").addClass("active");
+		searchHandler["srch-poleLength"] = {
+				action: "pole-length-grid",
+				container: "PoleLengthGrid"
+		};
+    searchStack["srch-poleLength"] = wrapFunction(search, this, ["srch-poleLength"]);
+	});
+
+	function addPoleLength(id) {
+		//$("#poleLengthModalHeading").html("Add New Pole Length");
+		mode = "create";
+		clearForm("poleLength", "modalPoleLength");
+	}
+
+	function editPoleLength(id) {
+		//$("#poleLengthModalHeading").html("Edit Pole Length");
+		mode = "update";
+		populateForm("poleLength", "pole_length", poleLengthData[id], "modalPoleLength");
+	}
+
+</script>

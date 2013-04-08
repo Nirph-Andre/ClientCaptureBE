@@ -1,0 +1,74 @@
+<!-- ContactRequest: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalContactRequest">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="contactRequestModalHeading">Edit Contact Request</h3>
+	  </div>
+		<form id="contactRequestForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="contactRequest_person_name"><b>Person Name *</b></label>
+						<input id="contactRequest_person_name" name="person_name" type="text"
+							form-id="contactRequest" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="contactRequest_trading_name"><b>Trading Name</b></label>
+						<input id="contactRequest_trading_name" name="trading_name" type="text"
+							form-id="contactRequest" class="span12 " maxlength="100">
+					</div>
+		  		<div class="control-group">
+		    		<label for="contactRequest_email"><b>Email</b></label>
+						<input id="contactRequest_email" name="email" type="text"
+							form-id="contactRequest" class="span12 " maxlength="255">
+					</div>
+		  		<div class="control-group">
+		    		<label for="contactRequest_mobile"><b>Mobile</b></label>
+						<input id="contactRequest_mobile" name="mobile" type="text"
+							form-id="contactRequest" class="span8 " maxlength="20">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="contactRequest_telephone"><b>Telephone</b></label>
+						<input id="contactRequest_telephone" name="telephone" type="text"
+							form-id="contactRequest" class="span8 " maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="contactRequest_subject"><b>Subject</b></label>
+						<input id="contactRequest_subject" name="subject" type="text"
+							form-id="contactRequest" class="span12 " maxlength="100">
+					</div>
+		  		<div class="control-group">
+			  		<label for="contactRequest_message"><b>Message</b></label>
+						<textarea id="contactRequest_message" name="message" rows="5"
+							form-id="contactRequest" class="span12 " maxlength="65535"></textarea>
+					</div>
+				<input type="hidden" id="contactRequest_id" name="id" form-id="contactRequest">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] ContactRequest: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#contactRequestForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("contactRequest", "contactRequest", "api/data/" + mode,
+			  	"ContactRequestGrid", theme + "/contact-request-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

@@ -1,0 +1,78 @@
+<!-- LibContact: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalLibContact">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libContactModalHeading">Edit Lib Contact</h3>
+	  </div>
+		<form id="libContactForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="libContact_first_name"><b>First Name *</b></label>
+						<input id="libContact_first_name" name="first_name" type="text"
+							form-id="libContact" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libContact_family_name"><b>Family Name *</b></label>
+						<input id="libContact_family_name" name="family_name" type="text"
+							form-id="libContact" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libContact_mobile"><b>Mobile</b></label>
+						<input id="libContact_mobile" name="mobile" type="text"
+							form-id="libContact" class="span8 " maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libContact_office"><b>Office</b></label>
+						<input id="libContact_office" name="office" type="text"
+							form-id="libContact" class="span8 " maxlength="20">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="libContact_fax"><b>Fax</b></label>
+						<input id="libContact_fax" name="fax" type="text"
+							form-id="libContact" class="span8 " maxlength="20">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libContact_email"><b>Email *</b></label>
+						<input id="libContact_email" name="email" type="text"
+							form-id="libContact" class="span12 required" maxlength="255">
+					</div>
+		  		<div class="control-group">
+				  	<label for="libContact_lib_address_id"><b>Lib Address</b></label>
+						<select id="libContact_lib_address_id" name="lib_address_id"
+							form-id="libContact" class="span12 " >
+							<option value="">-- Select Lib Address --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibAddress"], false); ?>
+
+						</select>
+					</div>
+				<input type="hidden" id="libContact_id" name="id" form-id="libContact">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibContact: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libContactForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libContact", "libContact", "api/data/" + mode,
+			  	"LibContactGrid", theme + "/lib-contact-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

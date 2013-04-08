@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibRegion: Data Grid -->
+<span id="LibRegionGrid">
+<?php include_once("lib-region-grid.phtml");?>
+</span>
+<!-- [End] LibRegion: Data Grid -->
+
+<!-- LibRegion: Modal Form -->
+<?php include_once("lib-region-modal.phtml");?>
+<!-- [End] LibRegion: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-region";
+
+	$(document).ready(function() {
+		$("#navLibRegion").addClass("active");
+		searchHandler["srch-libRegion"] = {
+				action: theme + "/lib-region-grid",
+				container: "LibRegionGrid"
+		};
+    searchStack["srch-libRegion"] = wrapFunction(search, this, ["srch-libRegion"]);
+	});
+
+	function addLibRegion(id) {
+		//$("#libRegionModalHeading").html("Add New Lib Region");
+		mode = "create";
+		clearForm("libRegion", "modalLibRegion");
+	}
+
+	function editLibRegion(id) {
+		//$("#libRegionModalHeading").html("Edit Lib Region");
+		mode = "update";
+		populateForm("libRegion", "lib_region", libRegionData[id], "modalLibRegion");
+	}
+
+</script>

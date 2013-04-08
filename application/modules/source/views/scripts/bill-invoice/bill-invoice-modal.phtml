@@ -1,0 +1,96 @@
+<!-- BillInvoice: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalBillInvoice">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="billInvoiceModalHeading">Edit Bill Invoice</h3>
+	  </div>
+		<form id="billInvoiceForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="billInvoice_invoice_nr"><b>Invoice Nr *</b></label>
+						<input id="billInvoice_invoice_nr" name="invoice_nr" type="text"
+							form-id="billInvoice" class="span10 required" maxlength="30">
+					</div>
+		  		<div class="control-group">
+				  	<label for="billInvoice_type"><b>Type</b></label>
+						<select id="billInvoice_type" name="type"
+							form-id="billInvoice" class="span12 " >
+							<option value="">-- Select Type --</option>
+							<option value="Prorata Invoice">Prorata Invoice</option>
+<option value="Tax Invoice">Tax Invoice</option>
+<option value="Credit Note">Credit Note</option>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+				  	<label for="billInvoice_profile_id"><b>Profile</b></label>
+						<select id="billInvoice_profile_id" name="profile_id"
+							form-id="billInvoice" class="span12 " >
+							<option value="">-- Select Profile --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listProfile"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+				  	<label for="billInvoice_lib_currency_id"><b>Lib Currency</b></label>
+						<select id="billInvoice_lib_currency_id" name="lib_currency_id"
+							form-id="billInvoice" class="span12 " >
+							<option value="">-- Select Lib Currency --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibCurrency"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoice_vat"><b>Vat</b></label>
+						<input id="billInvoice_vat" name="vat" type="text"
+							form-id="billInvoice" class="span4  number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="billInvoice_vat">
+			    		<input type="checkbox" id="billInvoice_vat" name="vat"
+			    			value="vat" form-id="billInvoice" checked>
+			    		&nbsp;<b>Vat</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoice_amount"><b>Amount *</b></label>
+						<input id="billInvoice_amount" name="amount" type="text"
+							form-id="billInvoice" class="span4 required number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="billInvoice_amount">
+			    		<input type="checkbox" id="billInvoice_amount" name="amount"
+			    			value="amount" form-id="billInvoice" checked>
+			    		&nbsp;<b>Amount *</b>
+		    		</label>
+					</div>
+				<input type="hidden" id="billInvoice_id" name="id" form-id="billInvoice">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] BillInvoice: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#billInvoiceForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("billInvoice", "billInvoice", "api/data/" + mode,
+			  	"BillInvoiceGrid", theme + "/bill-invoice-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

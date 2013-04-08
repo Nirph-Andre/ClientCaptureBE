@@ -1,0 +1,82 @@
+<!-- LibNewsletter: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalLibNewsletter">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libNewsletterModalHeading">Edit Lib Newsletter</h3>
+	  </div>
+		<form id="libNewsletterForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+				  	<label for="libNewsletter_lib_newsletter_template_id"><b>Lib Newsletter Template *</b></label>
+						<select id="libNewsletter_lib_newsletter_template_id" name="lib_newsletter_template_id"
+							form-id="libNewsletter" class="span12 required" >
+							<option value="">-- Select Lib Newsletter Template * --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibNewsletterTemplate"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNewsletter_subject"><b>Subject *</b></label>
+						<input id="libNewsletter_subject" name="subject" type="text"
+							form-id="libNewsletter" class="span12 required" maxlength="100">
+					</div>
+		  		<div class="control-group">
+			  		<label for="libNewsletter_content"><b>Content</b></label>
+						<textarea id="libNewsletter_content" name="content" rows="5"
+							form-id="libNewsletter" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+				  	<label for="libNewsletter_lib_attachment_id"><b>Lib Attachment</b></label>
+						<select id="libNewsletter_lib_attachment_id" name="lib_attachment_id"
+							form-id="libNewsletter" class="span12 " >
+							<option value="">-- Select Lib Attachment --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibAttachment"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+				  	<label for="libNewsletter_status"><b>Status *</b></label>
+						<select id="libNewsletter_status" name="status"
+							form-id="libNewsletter" class="span12 required" >
+							<option value="">-- Select Status * --</option>
+							<option value="Draft">Draft</option>
+<option value="Sent">Sent</option>
+<option value="Test">Test</option>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNewsletter_sent_to"><b>Sent To</b></label>
+						<input id="libNewsletter_sent_to" name="sent_to" type="text"
+							form-id="libNewsletter" class="span4  digits" >
+					</div>
+				<input type="hidden" id="libNewsletter_id" name="id" form-id="libNewsletter">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibNewsletter: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libNewsletterForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libNewsletter", "libNewsletter", "api/data/" + mode,
+			  	"LibNewsletterGrid", theme + "/lib-newsletter-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

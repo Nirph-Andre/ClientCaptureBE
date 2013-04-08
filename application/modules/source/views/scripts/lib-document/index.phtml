@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibDocument: Data Grid -->
+<span id="LibDocumentGrid">
+<?php include_once("lib-document-grid.phtml");?>
+</span>
+<!-- [End] LibDocument: Data Grid -->
+
+<!-- LibDocument: Modal Form -->
+<?php include_once("lib-document-modal.phtml");?>
+<!-- [End] LibDocument: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-document";
+
+	$(document).ready(function() {
+		$("#navLibDocument").addClass("active");
+		searchHandler["srch-libDocument"] = {
+				action: theme + "/lib-document-grid",
+				container: "LibDocumentGrid"
+		};
+    searchStack["srch-libDocument"] = wrapFunction(search, this, ["srch-libDocument"]);
+	});
+
+	function addLibDocument(id) {
+		//$("#libDocumentModalHeading").html("Add New Lib Document");
+		mode = "create";
+		clearForm("libDocument", "modalLibDocument");
+	}
+
+	function editLibDocument(id) {
+		//$("#libDocumentModalHeading").html("Edit Lib Document");
+		mode = "update";
+		populateForm("libDocument", "lib_document", libDocumentData[id], "modalLibDocument");
+	}
+
+</script>

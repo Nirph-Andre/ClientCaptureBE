@@ -1,0 +1,25 @@
+<phpunit bootstrap="./bootstrap.php">
+    <testsuite name="Application Test Suite">
+        <directory>./application</directory>
+    </testsuite>
+    <testsuite name="Library Test Suite">
+        <directory>./library</directory>
+    </testsuite>
+    
+    <filter>
+        <!-- If Zend Framework is inside your project's library, uncomment this filter -->
+        <blacklist>
+            <directory suffix=".php">../library/Zend</directory>
+            <directory suffix=".php">../library/ReGen</directory>
+            <directory suffix=".php">../library/PHPExcel</directory>
+        </blacklist>
+        <whitelist >
+            <directory suffix=".php">../library/Agent</directory>
+            <directory suffix=".php">../library/Component</directory>
+            <directory suffix=".php">../library/Object</directory>
+            <directory suffix=".php">../library/Struct</directory>
+            <directory suffix=".php">../library/Table</directory>
+            <directory suffix=".php">../application</directory>
+        </whitelist >
+    </filter>
+</phpunit>

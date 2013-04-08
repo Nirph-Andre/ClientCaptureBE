@@ -1,0 +1,74 @@
+<!-- LibNotificationLog: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalLibNotificationLog">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="libNotificationLogModalHeading">Edit Lib Notification Log</h3>
+	  </div>
+		<form id="libNotificationLogForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="libNotificationLog_email_to"><b>Email To</b></label>
+						<input id="libNotificationLog_email_to" name="email_to" type="text"
+							form-id="libNotificationLog" class="span12 " maxlength="250">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNotificationLog_email_subject"><b>Email Subject</b></label>
+						<input id="libNotificationLog_email_subject" name="email_subject" type="text"
+							form-id="libNotificationLog" class="span12 " maxlength="250">
+					</div>
+		  		<div class="control-group">
+			  		<label for="libNotificationLog_email_body"><b>Email Body</b></label>
+						<textarea id="libNotificationLog_email_body" name="email_body" rows="5"
+							form-id="libNotificationLog" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNotificationLog_sms_to"><b>Sms To</b></label>
+						<input id="libNotificationLog_sms_to" name="sms_to" type="text"
+							form-id="libNotificationLog" class="span8 " maxlength="20">
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+			  		<label for="libNotificationLog_sms_body"><b>Sms Body</b></label>
+						<textarea id="libNotificationLog_sms_body" name="sms_body" rows="5"
+							form-id="libNotificationLog" class="span12 " maxlength="65535"></textarea>
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNotificationLog_api_msg_id"><b>Api Msg</b></label>
+						<input id="libNotificationLog_api_msg_id" name="api_msg_id" type="text"
+							form-id="libNotificationLog" class="span10 " maxlength="32">
+					</div>
+		  		<div class="control-group">
+		    		<label for="libNotificationLog_sms_status"><b>Sms Status</b></label>
+						<input id="libNotificationLog_sms_status" name="sms_status" type="text"
+							form-id="libNotificationLog" class="span12 " maxlength="50">
+					</div>
+				<input type="hidden" id="libNotificationLog_id" name="id" form-id="libNotificationLog">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] LibNotificationLog: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#libNotificationLogForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("libNotificationLog", "libNotificationLog", "api/data/" + mode,
+			  	"LibNotificationLogGrid", theme + "/lib-notification-log-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

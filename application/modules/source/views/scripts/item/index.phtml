@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Item: Data Grid -->
+<span id="ItemGrid">
+<?php include_once("item-grid.phtml");?>
+</span>
+<!-- [End] Item: Data Grid -->
+
+<!-- Item: Modal Form -->
+<?php include_once("item-modal.phtml");?>
+<!-- [End] Item: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/item";
+
+	$(document).ready(function() {
+		$("#navItem").addClass("active");
+		searchHandler["srch-item"] = {
+				action: theme + "/item-grid",
+				container: "ItemGrid"
+		};
+    searchStack["srch-item"] = wrapFunction(search, this, ["srch-item"]);
+	});
+
+	function addItem(id) {
+		//$("#itemModalHeading").html("Add New Item");
+		mode = "create";
+		clearForm("item", "modalItem");
+	}
+
+	function editItem(id) {
+		//$("#itemModalHeading").html("Edit Item");
+		mode = "update";
+		populateForm("item", "item", itemData[id], "modalItem");
+	}
+
+</script>

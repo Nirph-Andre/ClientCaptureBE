@@ -1,0 +1,52 @@
+<!-- Floor: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalFloor">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="floorModalHeading">Edit Floor</h3>
+	  </div>
+		<form id="floorForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+				  	<label for="floor_building_id"><b>Building *</b></label>
+						<select id="floor_building_id" name="building_id"
+							form-id="floor" class="span12 required" >
+							<option value="">-- Select Building * --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listBuilding"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="floor_name"><b>Name *</b></label>
+						<input id="floor_name" name="name" type="text"
+							form-id="floor" class="span12 required" maxlength="100">
+					</div>
+				<input type="hidden" id="floor_id" name="id" form-id="floor">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] Floor: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#floorForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("floor", "floor", "api/data/" + mode,
+			  	"FloorGrid", theme + "/floor-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

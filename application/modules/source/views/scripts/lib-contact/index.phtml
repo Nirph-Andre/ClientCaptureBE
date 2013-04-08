@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibContact: Data Grid -->
+<span id="LibContactGrid">
+<?php include_once("lib-contact-grid.phtml");?>
+</span>
+<!-- [End] LibContact: Data Grid -->
+
+<!-- LibContact: Modal Form -->
+<?php include_once("lib-contact-modal.phtml");?>
+<!-- [End] LibContact: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-contact";
+
+	$(document).ready(function() {
+		$("#navLibContact").addClass("active");
+		searchHandler["srch-libContact"] = {
+				action: theme + "/lib-contact-grid",
+				container: "LibContactGrid"
+		};
+    searchStack["srch-libContact"] = wrapFunction(search, this, ["srch-libContact"]);
+	});
+
+	function addLibContact(id) {
+		//$("#libContactModalHeading").html("Add New Lib Contact");
+		mode = "create";
+		clearForm("libContact", "modalLibContact");
+	}
+
+	function editLibContact(id) {
+		//$("#libContactModalHeading").html("Edit Lib Contact");
+		mode = "update";
+		populateForm("libContact", "lib_contact", libContactData[id], "modalLibContact");
+	}
+
+</script>

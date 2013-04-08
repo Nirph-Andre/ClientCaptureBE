@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibPerson: Data Grid -->
+<span id="LibPersonGrid">
+<?php include_once("lib-person-grid.phtml");?>
+</span>
+<!-- [End] LibPerson: Data Grid -->
+
+<!-- LibPerson: Modal Form -->
+<?php include_once("lib-person-modal.phtml");?>
+<!-- [End] LibPerson: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-person";
+
+	$(document).ready(function() {
+		$("#navLibPerson").addClass("active");
+		searchHandler["srch-libPerson"] = {
+				action: theme + "/lib-person-grid",
+				container: "LibPersonGrid"
+		};
+    searchStack["srch-libPerson"] = wrapFunction(search, this, ["srch-libPerson"]);
+	});
+
+	function addLibPerson(id) {
+		//$("#libPersonModalHeading").html("Add New Lib Person");
+		mode = "create";
+		clearForm("libPerson", "modalLibPerson");
+	}
+
+	function editLibPerson(id) {
+		//$("#libPersonModalHeading").html("Edit Lib Person");
+		mode = "update";
+		populateForm("libPerson", "lib_person", libPersonData[id], "modalLibPerson");
+	}
+
+</script>

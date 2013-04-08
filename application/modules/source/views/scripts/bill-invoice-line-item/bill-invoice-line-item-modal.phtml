@@ -1,0 +1,103 @@
+<!-- BillInvoiceLineItem: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-wide modal-up hide fade" id="modalBillInvoiceLineItem">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="billInvoiceLineItemModalHeading">Edit Bill Invoice Line Item</h3>
+	  </div>
+		<form id="billInvoiceLineItemForm" class="modal-form">
+		  <div class="modal-body modal-high">
+			  <div class="span6">
+		  		<div class="control-group">
+				  	<label for="billInvoiceLineItem_bill_invoice_id"><b>Bill Invoice *</b></label>
+						<select id="billInvoiceLineItem_bill_invoice_id" name="bill_invoice_id"
+							form-id="billInvoiceLineItem" class="span12 required" >
+							<option value="">-- Select Bill Invoice * --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listBillInvoice"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+				  	<label for="billInvoiceLineItem_lib_service_id"><b>Lib Service</b></label>
+						<select id="billInvoiceLineItem_lib_service_id" name="lib_service_id"
+							form-id="billInvoiceLineItem" class="span12 " >
+							<option value="">-- Select Lib Service --</option>
+							<?php echo $utilDisplay->buildDropdownOptions($this->data["listLibService"], false); ?>
+
+						</select>
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoiceLineItem_description"><b>Description *</b></label>
+						<input id="billInvoiceLineItem_description" name="description" type="text"
+							form-id="billInvoiceLineItem" class="span12 required" maxlength="50">
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoiceLineItem_units"><b>Units</b></label>
+						<input id="billInvoiceLineItem_units" name="units" type="text"
+							form-id="billInvoiceLineItem" class="span4  number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="billInvoiceLineItem_units">
+			    		<input type="checkbox" id="billInvoiceLineItem_units" name="units"
+			    			value="units" form-id="billInvoiceLineItem" checked>
+			    		&nbsp;<b>Units</b>
+		    		</label>
+					</div></div>
+			  <div class="span6">
+		  		<div class="control-group">
+		    		<label for="billInvoiceLineItem_months"><b>Months</b></label>
+						<input id="billInvoiceLineItem_months" name="months" type="text"
+							form-id="billInvoiceLineItem" class="span4  digits" >
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoiceLineItem_vat"><b>Vat</b></label>
+						<input id="billInvoiceLineItem_vat" name="vat" type="text"
+							form-id="billInvoiceLineItem" class="span4  number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="billInvoiceLineItem_vat">
+			    		<input type="checkbox" id="billInvoiceLineItem_vat" name="vat"
+			    			value="vat" form-id="billInvoiceLineItem" checked>
+			    		&nbsp;<b>Vat</b>
+		    		</label>
+					</div>
+		  		<div class="control-group">
+		    		<label for="billInvoiceLineItem_total"><b>Total *</b></label>
+						<input id="billInvoiceLineItem_total" name="total" type="text"
+							form-id="billInvoiceLineItem" class="span4 required number" >
+					</div>
+		  		<div class="control-group">
+		    		<label class="checkbox" for="billInvoiceLineItem_total">
+			    		<input type="checkbox" id="billInvoiceLineItem_total" name="total"
+			    			value="total" form-id="billInvoiceLineItem" checked>
+			    		&nbsp;<b>Total *</b>
+		    		</label>
+					</div>
+				<input type="hidden" id="billInvoiceLineItem_id" name="id" form-id="billInvoiceLineItem">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] BillInvoiceLineItem: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#billInvoiceLineItemForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("billInvoiceLineItem", "billInvoiceLineItem", "api/data/" + mode,
+			  	"BillInvoiceLineItemGrid", theme + "/bill-invoice-line-item-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

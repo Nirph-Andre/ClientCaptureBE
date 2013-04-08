@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibNewsletter: Data Grid -->
+<span id="LibNewsletterGrid">
+<?php include_once("lib-newsletter-grid.phtml");?>
+</span>
+<!-- [End] LibNewsletter: Data Grid -->
+
+<!-- LibNewsletter: Modal Form -->
+<?php include_once("lib-newsletter-modal.phtml");?>
+<!-- [End] LibNewsletter: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-newsletter";
+
+	$(document).ready(function() {
+		$("#navLibNewsletter").addClass("active");
+		searchHandler["srch-libNewsletter"] = {
+				action: theme + "/lib-newsletter-grid",
+				container: "LibNewsletterGrid"
+		};
+    searchStack["srch-libNewsletter"] = wrapFunction(search, this, ["srch-libNewsletter"]);
+	});
+
+	function addLibNewsletter(id) {
+		//$("#libNewsletterModalHeading").html("Add New Lib Newsletter");
+		mode = "create";
+		clearForm("libNewsletter", "modalLibNewsletter");
+	}
+
+	function editLibNewsletter(id) {
+		//$("#libNewsletterModalHeading").html("Edit Lib Newsletter");
+		mode = "update";
+		populateForm("libNewsletter", "lib_newsletter", libNewsletterData[id], "modalLibNewsletter");
+	}
+
+</script>

@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Street: Data Grid -->
+<span id="StreetGrid">
+<?php include_once("street-grid.phtml");?>
+</span>
+<!-- [End] Street: Data Grid -->
+
+<!-- Street: Modal Form -->
+<?php include_once("street-modal.phtml");?>
+<!-- [End] Street: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/street";
+
+	$(document).ready(function() {
+		$("#navStreet").addClass("active");
+		searchHandler["srch-street"] = {
+				action: theme + "/street-grid",
+				container: "StreetGrid"
+		};
+    searchStack["srch-street"] = wrapFunction(search, this, ["srch-street"]);
+	});
+
+	function addStreet(id) {
+		//$("#streetModalHeading").html("Add New Street");
+		mode = "create";
+		clearForm("street", "modalStreet");
+	}
+
+	function editStreet(id) {
+		//$("#streetModalHeading").html("Edit Street");
+		mode = "update";
+		populateForm("street", "street", streetData[id], "modalStreet");
+	}
+
+</script>

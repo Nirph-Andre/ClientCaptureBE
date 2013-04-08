@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- LibCurrency: Data Grid -->
+<span id="LibCurrencyGrid">
+<?php include_once("lib-currency-grid.phtml");?>
+</span>
+<!-- [End] LibCurrency: Data Grid -->
+
+<!-- LibCurrency: Modal Form -->
+<?php include_once("lib-currency-modal.phtml");?>
+<!-- [End] LibCurrency: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/lib-currency";
+
+	$(document).ready(function() {
+		$("#navLibCurrency").addClass("active");
+		searchHandler["srch-libCurrency"] = {
+				action: theme + "/lib-currency-grid",
+				container: "LibCurrencyGrid"
+		};
+    searchStack["srch-libCurrency"] = wrapFunction(search, this, ["srch-libCurrency"]);
+	});
+
+	function addLibCurrency(id) {
+		//$("#libCurrencyModalHeading").html("Add New Lib Currency");
+		mode = "create";
+		clearForm("libCurrency", "modalLibCurrency");
+	}
+
+	function editLibCurrency(id) {
+		//$("#libCurrencyModalHeading").html("Edit Lib Currency");
+		mode = "update";
+		populateForm("libCurrency", "lib_currency", libCurrencyData[id], "modalLibCurrency");
+	}
+
+</script>

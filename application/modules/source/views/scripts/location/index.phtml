@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Location: Data Grid -->
+<span id="LocationGrid">
+<?php include_once("location-grid.phtml");?>
+</span>
+<!-- [End] Location: Data Grid -->
+
+<!-- Location: Modal Form -->
+<?php include_once("location-modal.phtml");?>
+<!-- [End] Location: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/location";
+
+	$(document).ready(function() {
+		$("#navLocation").addClass("active");
+		searchHandler["srch-location"] = {
+				action: theme + "/location-grid",
+				container: "LocationGrid"
+		};
+    searchStack["srch-location"] = wrapFunction(search, this, ["srch-location"]);
+	});
+
+	function addLocation(id) {
+		//$("#locationModalHeading").html("Add New Location");
+		mode = "create";
+		clearForm("location", "modalLocation");
+	}
+
+	function editLocation(id) {
+		//$("#locationModalHeading").html("Edit Location");
+		mode = "update";
+		populateForm("location", "location", locationData[id], "modalLocation");
+	}
+
+</script>

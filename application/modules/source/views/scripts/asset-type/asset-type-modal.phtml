@@ -1,0 +1,43 @@
+<!-- AssetType: Modal Form -->
+<div class="row-fluid">
+  <div class="span12">
+	<div class="modal modal-thinner hide fade" id="modalAssetType">
+	  <div class="modal-header">
+		<button class="close" data-dismiss="modal">x</button>
+		<h3 id="assetTypeModalHeading">Edit Asset Type</h3>
+	  </div>
+		<form id="assetTypeForm" class="modal-form">
+		  <div class="modal-body ">
+			  <div class="span12">
+		  		<div class="control-group">
+		    		<label for="assetType_name"><b>Name *</b></label>
+						<input id="assetType_name" name="name" type="text"
+							form-id="assetType" class="span12 required" maxlength="100">
+					</div>
+				<input type="hidden" id="assetType_id" name="id" form-id="assetType">
+			  </div>
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" data-dismiss="modal" class="btn btn-danger">Close</button>&nbsp;
+			<button type="submit" class="btn btn-success btn-warning btn-save"
+		  	data-loading-text="saving..."
+		  	data-complete-text="&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;">
+		  		&nbsp;&nbsp;&nbsp;&nbsp;Save&nbsp;&nbsp;&nbsp;&nbsp;
+		  	</button>&nbsp;
+		  </div>
+		</form>
+	</div>
+  </div>
+</div>
+<!-- [End] AssetType: Modal Form -->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#assetTypeForm").validate({
+		  submitHandler: function(form) {
+			  doUpdate("assetType", "assetType", "api/data/" + mode,
+			  	"AssetTypeGrid", theme + "/asset-type-grid",
+					false, true, false, {});
+		  }
+		});
+	});
+</script>

@@ -1,0 +1,42 @@
+
+<?php
+$utilDisplay = new Struct_Util_Display();
+?>
+
+<!-- Config: Data Grid -->
+<span id="ConfigGrid">
+<?php include_once("config-grid.phtml");?>
+</span>
+<!-- [End] Config: Data Grid -->
+
+<!-- Config: Modal Form -->
+<?php include_once("config-modal.phtml");?>
+<!-- [End] Config: Modal Form -->
+
+
+<script type="text/javascript">
+
+	var theme = "source/config";
+
+	$(document).ready(function() {
+		$("#navConfig").addClass("active");
+		searchHandler["srch-config"] = {
+				action: theme + "/config-grid",
+				container: "ConfigGrid"
+		};
+    searchStack["srch-config"] = wrapFunction(search, this, ["srch-config"]);
+	});
+
+	function addConfig(id) {
+		//$("#configModalHeading").html("Add New Config");
+		mode = "create";
+		clearForm("config", "modalConfig");
+	}
+
+	function editConfig(id) {
+		//$("#configModalHeading").html("Edit Config");
+		mode = "update";
+		populateForm("config", "config", configData[id], "modalConfig");
+	}
+
+</script>

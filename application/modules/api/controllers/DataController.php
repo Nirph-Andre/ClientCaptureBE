@@ -106,6 +106,8 @@ class Api_DataController extends Struct_Abstract_Controller
 	{
 		#-> Config.
 		$synchDate = date('Y-m-d H:i:s', time() - 1);
+Struct_Debug::errorLog('_nameSpace', $this->_nameSpace . ' : ' . $this->_data['lastSynchDate'] . ' > ' . $synchDate);
+Struct_Debug::errorLog($this->_nameSpace, $config);
 		$ini = new Zend_Config_Ini(APPLICATION_PATH . '/configs/synch.ini', 'Table');
 		$config = $ini->toArray();
 		$config = isset($config[$this->_nameSpace])
@@ -113,7 +115,6 @@ class Api_DataController extends Struct_Abstract_Controller
 			: array('Upstream' => false, 'Downstream' => false);
 
 		#-> Upstream.
-Struct_Debug::errorLog('_nameSpace', $this->_nameSpace . ' : ' . $this->_data['lastSynchDate'] . ' > ' . $synchDate);
 		$feedback = array();
 		if ($config['Upstream'])
 		{

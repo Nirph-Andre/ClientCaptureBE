@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2013 at 07:59 PM
+-- Generation Time: Apr 09, 2013 at 05:55 AM
 -- Server version: 5.1.63-community
 -- PHP Version: 5.4.0-ZS5.6.0
 
@@ -132,6 +132,26 @@ CREATE TABLE IF NOT EXISTS `contact_request` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customer`
+--
+
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(10) unsigned NOT NULL,
+  `name` varchar(250) DEFAULT NULL,
+  `surname` varchar(250) DEFAULT NULL,
+  `email` varchar(250) DEFAULT NULL,
+  `cell` varchar(20) DEFAULT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL,
+  `archived` tinyint(3) unsigned DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
@@ -205,22 +225,23 @@ CREATE TABLE IF NOT EXISTS `meta_table` (
   `hash` varchar(32) NOT NULL,
   `version` smallint(6) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`,`hash`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `meta_table`
 --
 
 INSERT INTO `meta_table` (`id`, `name`, `created`, `updated`, `hash`, `version`) VALUES
-(1, 'item', '2013-04-08 00:00:00', '2013-04-08 00:00:00', '6dd983af97e1cee4f4d350d8c8a8e280', 2),
+(1, 'item', '2013-04-08 00:00:00', '2013-04-09 00:00:00', '6dd983af97e1cee4f4d350d8c8a8e280', 5),
 (2, 'asset', '2013-04-08 00:00:00', NULL, '00f548a4b7938d2cfe7ae9c6ec5783d6', 1),
-(3, 'profile', '2013-04-08 00:00:00', '2013-04-08 00:00:00', '74f6870f6740f14743f1648e51d26b70', 2),
+(3, 'profile', '2013-04-08 00:00:00', '2013-04-09 00:00:00', '74f6870f6740f14743f1648e51d26b70', 5),
 (4, 'contact_request', '2013-04-08 00:00:00', NULL, 'c6281d8d77e2fb13fd1b1b908e69fce7', 1),
 (5, 'app_audit_log', '2013-04-08 00:00:00', NULL, 'f0ad8d2f5234d9e55ce6860f3e7d443c', 1),
 (6, 'app_link_request', '2013-04-08 00:00:00', NULL, 'f43bdcb651541b245f2655558fb3d18d', 1),
-(7, 'config', '2013-04-08 00:00:00', '2013-04-08 00:00:00', 'e03531a6324decfbb1141c4f2892a0c5', 2),
+(7, 'config', '2013-04-08 00:00:00', '2013-04-09 00:00:00', 'e03531a6324decfbb1141c4f2892a0c5', 5),
 (8, 'lib_authentication_log', '2013-04-08 00:00:00', NULL, 'd656bfcd19186809dded6a3be9d5844e', 1),
-(9, 'lib_notification_log', '2013-04-08 00:00:00', NULL, 'ed4aa2a527e0e94a55b9023ae3ef9825', 1);
+(9, 'lib_notification_log', '2013-04-08 00:00:00', NULL, 'ed4aa2a527e0e94a55b9023ae3ef9825', 1),
+(10, 'customer', '2013-04-09 00:00:00', NULL, '54e88c959ee9c2b9f5e0f227e697fbf8', 1);
 
 -- --------------------------------------------------------
 

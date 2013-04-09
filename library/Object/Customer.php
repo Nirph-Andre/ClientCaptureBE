@@ -1,20 +1,20 @@
 <?php
 
 /**
- * DataAccess Value Object for table lib_xmlrpc_profile
+ * DataAccess Value Object for table customer
  */
-class Object_LibXmlrpcProfile extends Struct_Abstract_DataAccess
+class Object_Customer extends Struct_Abstract_DataAccess
 {
 
     /**
      * Namespace used for raising events.
      */
-    protected $_eventNamespace = 'LibXmlrpcProfile';
+    protected $_eventNamespace = 'Customer';
 
     /**
      * Table this value object owns and may directly modify.
      */
-    protected $_table = 'lib_xmlrpc_profile';
+    protected $_table = 'customer';
 
     /**
      * Unique identification field(s).
@@ -32,28 +32,42 @@ class Object_LibXmlrpcProfile extends Struct_Abstract_DataAccess
                     'params' => array()
                     ))
             ),
-        'name' => array(
+        'item_id' => array(
             'required' => true,
-            'validators' => array(array(
-                    'type' => 'StringLength',
-                    'params' => array('max' => '50')
-                    ))
-            ),
-        'auth_token' => array(
-            'required' => true,
-            'validators' => array(array(
-                    'type' => 'StringLength',
-                    'params' => array('max' => '40')
-                    ))
-            ),
-        'requests' => array(
-            'required' => false,
             'validators' => array(array(
                     'type' => 'Between',
                     'params' => array(
                         'min' => 0,
-                        'max' => 65535
+                        'max' => 4294967295
                         )
+                    ))
+            ),
+        'name' => array(
+            'required' => false,
+            'validators' => array(array(
+                    'type' => 'StringLength',
+                    'params' => array('max' => '250')
+                    ))
+            ),
+        'surname' => array(
+            'required' => false,
+            'validators' => array(array(
+                    'type' => 'StringLength',
+                    'params' => array('max' => '250')
+                    ))
+            ),
+        'email' => array(
+            'required' => false,
+            'validators' => array(array(
+                    'type' => 'EmailAddress',
+                    'params' => array()
+                    ))
+            ),
+        'cell' => array(
+            'required' => false,
+            'validators' => array(array(
+                    'type' => 'StringLength',
+                    'params' => array('max' => '20')
                     ))
             ),
         'archived' => array(

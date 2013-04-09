@@ -19,7 +19,10 @@ class Table_Item extends Struct_Abstract_ModelTable
     /**
      * Tables dependant on this one.
      */
-    protected $_dependentTables = array('asset' => 'Table_Asset');
+    protected $_dependentTables = array(
+        'asset' => 'Table_Asset',
+        'customer' => 'Table_Customer'
+        );
 
     /**
      * Data dependancy chain.

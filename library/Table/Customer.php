@@ -1,29 +1,29 @@
 <?php
 
 /**
- * Table model for location
+ * Table model for customer
  */
-class Table_Location extends Struct_Abstract_ModelTable
+class Table_Customer extends Struct_Abstract_ModelTable
 {
 
     /**
      * Database table name.
      */
-    protected $_name = 'location';
+    protected $_name = 'customer';
 
     /**
      * Data associations to other tables.
      */
-    protected $_referenceMap = array();
+    protected $_referenceMap = array('Item' => array(
+            'columns' => 'item_id',
+            'refTableClass' => 'Table_Item',
+            'refColumns' => 'id'
+            ));
 
     /**
      * Tables dependant on this one.
      */
-    protected $_dependentTables = array(
-        'asset' => 'Table_Asset',
-        'building' => 'Table_Building',
-        'town' => 'Table_Town'
-        );
+    protected $_dependentTables = array('app_audit_log' => 'Table_AppAuditLog');
 
     /**
      * Data dependancy chain.
@@ -36,7 +36,7 @@ class Table_Location extends Struct_Abstract_ModelTable
     protected $_metadata = array(
         'id' => array(
             'SCHEMA_NAME' => null,
-            'TABLE_NAME' => 'location',
+            'TABLE_NAME' => 'customer',
             'COLUMN_NAME' => 'id',
             'COLUMN_POSITION' => 1,
             'DATA_TYPE' => 'int',
@@ -52,29 +52,101 @@ class Table_Location extends Struct_Abstract_ModelTable
             'FLAGS' => 2051,
             'FLAG_LIST' => 'FIELD_AUTOKEY | FIELD_REQUIRED'
             ),
-        'name' => array(
+        'item_id' => array(
             'SCHEMA_NAME' => null,
-            'TABLE_NAME' => 'location',
-            'COLUMN_NAME' => 'name',
+            'TABLE_NAME' => 'customer',
+            'COLUMN_NAME' => 'item_id',
             'COLUMN_POSITION' => 2,
-            'DATA_TYPE' => 'varchar',
+            'DATA_TYPE' => 'int',
             'DEFAULT' => null,
             'NULLABLE' => false,
-            'LENGTH' => '100',
+            'LENGTH' => null,
             'SCALE' => null,
             'PRECISION' => null,
-            'UNSIGNED' => null,
+            'UNSIGNED' => true,
             'PRIMARY' => false,
             'PRIMARY_POSITION' => null,
             'IDENTITY' => false,
             'FLAGS' => 3,
             'FLAG_LIST' => 'FIELD_REQUIRED'
             ),
+        'name' => array(
+            'SCHEMA_NAME' => null,
+            'TABLE_NAME' => 'customer',
+            'COLUMN_NAME' => 'name',
+            'COLUMN_POSITION' => 3,
+            'DATA_TYPE' => 'varchar',
+            'DEFAULT' => null,
+            'NULLABLE' => true,
+            'LENGTH' => '250',
+            'SCALE' => null,
+            'PRECISION' => null,
+            'UNSIGNED' => null,
+            'PRIMARY' => false,
+            'PRIMARY_POSITION' => null,
+            'IDENTITY' => false,
+            'FLAGS' => 0,
+            'FLAG_LIST' => ''
+            ),
+        'surname' => array(
+            'SCHEMA_NAME' => null,
+            'TABLE_NAME' => 'customer',
+            'COLUMN_NAME' => 'surname',
+            'COLUMN_POSITION' => 4,
+            'DATA_TYPE' => 'varchar',
+            'DEFAULT' => null,
+            'NULLABLE' => true,
+            'LENGTH' => '250',
+            'SCALE' => null,
+            'PRECISION' => null,
+            'UNSIGNED' => null,
+            'PRIMARY' => false,
+            'PRIMARY_POSITION' => null,
+            'IDENTITY' => false,
+            'FLAGS' => 0,
+            'FLAG_LIST' => ''
+            ),
+        'email' => array(
+            'SCHEMA_NAME' => null,
+            'TABLE_NAME' => 'customer',
+            'COLUMN_NAME' => 'email',
+            'COLUMN_POSITION' => 5,
+            'DATA_TYPE' => 'varchar',
+            'DEFAULT' => null,
+            'NULLABLE' => true,
+            'LENGTH' => '250',
+            'SCALE' => null,
+            'PRECISION' => null,
+            'UNSIGNED' => null,
+            'PRIMARY' => false,
+            'PRIMARY_POSITION' => null,
+            'IDENTITY' => false,
+            'FLAGS' => 0,
+            'FLAG_LIST' => ''
+            ),
+        'cell' => array(
+            'SCHEMA_NAME' => null,
+            'TABLE_NAME' => 'customer',
+            'COLUMN_NAME' => 'cell',
+            'COLUMN_POSITION' => 6,
+            'DATA_TYPE' => 'varchar',
+            'DEFAULT' => null,
+            'NULLABLE' => true,
+            'LENGTH' => '20',
+            'SCALE' => null,
+            'PRECISION' => null,
+            'UNSIGNED' => null,
+            'PRIMARY' => false,
+            'PRIMARY_POSITION' => null,
+            'IDENTITY' => false,
+            'FLAGS' => 0,
+            'FLAG_LIST' => ''
+            ),
         'created' => array(
             'SCHEMA_NAME' => null,
-            'TABLE_NAME' => 'location',
+            'TABLE_NAME' => 'customer',
             'COLUMN_NAME' => 'created',
-            'COLUMN_POSITION' => 3,
+            'COLUMN_POSITION' => 7,
             'DATA_TYPE' => 'datetime',
             'DEFAULT' => null,
             'NULLABLE' => false,
@@ -90,9 +162,9 @@ class Table_Location extends Struct_Abstract_ModelTable
             ),
         'updated' => array(
             'SCHEMA_NAME' => null,
-            'TABLE_NAME' => 'location',
+            'TABLE_NAME' => 'customer',
             'COLUMN_NAME' => 'updated',
-            'COLUMN_POSITION' => 4,
+            'COLUMN_POSITION' => 8,
             'DATA_TYPE' => 'datetime',
             'DEFAULT' => null,
             'NULLABLE' => true,
@@ -108,9 +180,9 @@ class Table_Location extends Struct_Abstract_ModelTable
             ),
         'archived' => array(
             'SCHEMA_NAME' => null,
-            'TABLE_NAME' => 'location',
+            'TABLE_NAME' => 'customer',
             'COLUMN_NAME' => 'archived',
-            'COLUMN_POSITION' => 5,
+            'COLUMN_POSITION' => 9,
             'DATA_TYPE' => 'tinyint',
             'DEFAULT' => '0',
             'NULLABLE' => true,
@@ -141,7 +213,11 @@ class Table_Location extends Struct_Abstract_ModelTable
      */
     protected $fieldNames = array(
         'id' => 'Id',
+        'item_id' => 'ItemId',
         'name' => 'Name',
+        'surname' => 'Surname',
+        'email' => 'Email',
+        'cell' => 'Cell',
         'created' => 'Created',
         'updated' => 'Updated',
         'archived' => 'Archived'
@@ -152,7 +228,11 @@ class Table_Location extends Struct_Abstract_ModelTable
      */
     protected $newRow = array(
         'id' => null,
+        'item_id' => null,
         'name' => null,
+        'surname' => null,
+        'email' => null,
+        'cell' => null,
         'created' => null,
         'updated' => null,
         'archived' => '0'
@@ -166,7 +246,7 @@ class Table_Location extends Struct_Abstract_ModelTable
     /**
      * Label format for list/dropdown display.
      */
-    protected $labelFormatForeign = '[location_name]';
+    protected $labelFormatForeign = '[customer_name]';
 
 
 }

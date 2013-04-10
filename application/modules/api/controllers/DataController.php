@@ -92,6 +92,7 @@ class Api_DataController extends Struct_Abstract_Controller
 				unset($this->_data['Options']);
 			}
 		}
+		Struct_Debug::errorLog($this->_nameSpace, 'Action: ' . $action);
 
 		$class = 'Object_' . str_replace('DropList', '', ucfirst($this->_nameSpace));
 		$this->_object = new $class();
